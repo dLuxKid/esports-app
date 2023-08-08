@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* TYPOGRAPHY */
+.banner-text {
+  @apply font-bold text-[7.5rem] leading-[8rem];
+}
+
+.nav-text {
+  @apply font-semibold text-[1.375rem] leading-6;
+}
+
+.header-text {
+  @apply font-bold text-[5.625rem] leading-[6rem];
+}
+
+.title-text {
+  @apply font-semibold text-5xl;
+}
+
+.body-text {
+  @apply font-normal text-[1.125rem] leading-[1.25rem];
+}
+
+.tiny-text {
+  @apply font-normal text-[0.9375rem] leading-4;
+}
+
+/* BUTTON STYLES */
+.white-outline {
+  @apply border border-pry-white text-pry-white bg-transparent text-[1.375rem] leading-6;
+}
+
+.white-btn {
+  @apply border-0 bg-pry-white text-[#181818] text-[1.375rem] leading-6;
+}
+
+.black-btn {
+  @apply border-0 bg-pry-black text-pry-white text-base;
+}
+
+.cta-btn {
+  @apply border-0 bg-[#00444D] text-[0.9375rem] leading-4 font-bold text-pry-white;
+}
+
+.btn {
+  @apply h-[3.75rem] min-w-[10rem] text-center font-semibold py-4 px-9;
+}
+
+/* FLEX TEMPLATE */
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.flex-start {
+  @apply flex justify-start items-start;
+}
+
+.flex-end {
+  @apply flex justify-end items-center;
+}
+
+.flex-between {
+  @apply flex justify-between items-center;
+}
