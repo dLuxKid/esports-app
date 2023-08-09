@@ -25,9 +25,9 @@ body::-webkit-scrollbar {
 }
 
 section {
-  min-height: 90vh;
+  min-height: 100vh;
   padding: 2.5% 5%;
-  width: 100vw;
+  width: 100%;
 }
 
 @media screen and (max-width: 768px) {
@@ -36,13 +36,35 @@ section {
   }
 }
 
+input {
+  outline: 0;
+  border-bottom: 1px solid #d4d4d4;
+  padding: 1rem 2px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #000;
+  width: 100%;
+  background: transparent;
+}
+
+input:focus,
+input:active {
+  outline: 0;
+}
+
+input::placeholder {
+  font-weight: 400;
+  font-size: 1rem;
+  color: #000;
+}
+
 /* TYPOGRAPHY */
 .banner-text {
   @apply font-bold text-[7.5rem] leading-[8rem];
 }
 
 .nav-text {
-  @apply font-semibold text-[1.375rem] leading-6 cursor-pointer;
+  @apply font-semibold text-[1.375rem] leading-6 cursor-pointer hover:border-pry-white border-transparent border-b-2 transition-all duration-300;
 }
 
 .header-text {
@@ -79,7 +101,7 @@ section {
 }
 
 .btn {
-  @apply h-[3.75rem] min-w-[10rem] text-center font-semibold py-2 px-9;
+  @apply h-[3.75rem] min-w-[10rem] text-center font-semibold py-2 px-9 transition-all duration-300 hover:opacity-90;
 }
 
 /* FLEX TEMPLATE */
