@@ -3,16 +3,15 @@
 // react imports
 import { useState } from "react";
 // firebase imports
+import { auth, storage } from "@/firebase";
+import { FirebaseError } from "firebase/app";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { auth, db, storage } from "@/firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { doc, setDoc, updateDoc } from "firebase/firestore";
-import { FirebaseError } from "firebase/app";
 // types
 import { createUserType, loginUserType } from "./../types/authentication.d";
 // data

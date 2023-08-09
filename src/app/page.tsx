@@ -1,9 +1,14 @@
+'use client'
 
+import withoutAuth from "@/HOC/withoutAuth"
 
-export default function Home() {
+function Home() {
+
   return (
-    <main className="max-w-screen min-h-screen">
+    <main className="">
 
     </main>
   )
 }
+
+export default withoutAuth(Home)
