@@ -4,8 +4,8 @@
 import { useRouter } from "next/navigation"
 // react imports
 import { useEffect } from 'react'
-// store data
-import { useAuthStore } from "@/store"
+// context data
+import { useAuthContext } from "@/contexts/useAuthContext"
 // components
 import Loader from "@/components/Loader/Loader"
 
@@ -17,7 +17,7 @@ export default function withAuth(Component: React.ComponentType) {
 
     return () => {
         // get user from store
-        const user = useAuthStore(state => state.user)
+        const { user } = useAuthContext()
 
         if (!user?.uid) {
             // If user is not logged in, return login component

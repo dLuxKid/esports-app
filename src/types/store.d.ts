@@ -1,5 +1,15 @@
-export interface State {
+export type authContextType = {
   user: any;
-  loginUser: (user: any) => void;
-  logoutUser: () => void;
+  authIsReady: boolean;
+  dispatch: React.Dispatch<authActions>;
+};
+
+export interface authState {
+  user: any;
+  authIsReady: boolean;
+}
+
+export interface authActions {
+  type: string;
+  payload?: any;
 }
