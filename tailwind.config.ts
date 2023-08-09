@@ -8,9 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        codmbg: "url('/src/assets/codmbg.jpg')",
-      },
+      // backgroundImage: {
+      //   codmbg: "url('/src/assets/codmbg.jpg')",
+      // },
       colors: {
         "pry-black": "#0D0D0D",
         "pure-black": "#000",
