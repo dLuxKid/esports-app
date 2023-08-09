@@ -1,16 +1,21 @@
+
 "use client"
+        
+import withoutAuth from "@/HOC/withoutAuth"
 import useBackgroundImage from "@/hooks/useBackgroundImage";
 import styles from "@/styles/homepage.module.css";
+        
+        
 const images = [
   "/assets/hero-background.jpg", "/assets/hero2.jpg",
   "/assets/hero3.jpg"
 ]
-
-export default function Home() {
+        
+function Home() {
   const backgroundImage = useBackgroundImage(images, 3000)
 
   return (
-    <main className="max-w-screen min-h-screen">
+    <main className="">
       <div className="flex h-[65vh]">
         <div
           className={`flex flex-col text-white p-20 space-y-32 justify-center w-3/5 bg-zinc-700 bg-cover ${styles.herobanner}`}
@@ -48,6 +53,10 @@ export default function Home() {
         </div>
         <div className={`w-2/5 bg-zinc-300 ${styles.banner} bg-contain`}></div>
       </div>
+
+
     </main>
   );
 }
+
+export default withoutAuth(Home)

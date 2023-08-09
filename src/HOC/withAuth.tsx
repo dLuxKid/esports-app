@@ -1,14 +1,37 @@
 'use client'
 
+// next imports
+import { useRouter } from "next/navigation"
+// react imports
+import { useEffect } from 'react'
+// store data
+import { useAuthStore } from "@/store"
+// components
+import Loader from "@/components/Loader/Loader"
 
 
 export default function withAuth(Component: React.ComponentType) {
-    const Auth = (props: any) {
 
-        return <Component {...props} />
+    const props = Component.defaultProps
+    const otherProps = Component.propTypes
+
+    return () => {
+        // get user from store
+        const user = useAuthStore(state => state.user)
+
+        if (!user?.uid) {
+            // If user is not logged in, return login component
+            return <Redirect url="/login" />;
+        }
+        return <Component {...props} {...otherProps} />
     }
-
-    return Auth
-
-
 }
+
+export const Redirect = ({ url }: { url: string }) => {
+    const router = useRouter();
+
+    useEffect(() => {
+        router.push(url);
+    }, [router, url]);
+    return <Loader />;
+};
