@@ -11,6 +11,7 @@ import '@/styles/globals.css'
 import Navbar from '@/components/Navbar/Navbar'
 import Footer from '@/components/Footer/Footer'
 // toast imports
+
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // store data
@@ -18,6 +19,7 @@ import { useAuthStore } from '@/store'
 // firebase imports
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '@/firebase'
+
 
 
 export const metadata: Metadata = {

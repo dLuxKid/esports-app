@@ -18,6 +18,9 @@ const config: Config = {
         "pry-grey": "#EFEFEF",
         "pry-green": "#00444D",
       },
+      width: {
+        '1/10': '10%'
+      }
     },
   },
   plugins: [],
