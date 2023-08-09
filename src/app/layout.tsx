@@ -26,7 +26,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
-        <ToastContainer
+        {/* <ToastContainer
           position="top-right"
           autoClose={5000}
           hideProgressBar={false}
@@ -37,7 +37,7 @@ export default function RootLayout({
           draggable
           pauseOnHover
           theme="colored"
-        />
+        /> */}
       </body>
     </html>
   )

@@ -1,6 +1,20 @@
 .herobanner {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 100%),
-    url("../assets/hero-background.jpg") no-repeat;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+.banner {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 100%),
+    url("../assets/codmbg.jpg") no-repeat;
   background-size: cover;
 }
 
