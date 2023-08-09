@@ -18,17 +18,16 @@ import { createUserType, loginUserType } from "./../types/authentication.d";
 import { firebaseAuthError } from "@/data/firebaseAuthErrors";
 // toast
 import { showToast } from "@/functions/toast";
-// zustand store
-import { useAuthStore } from "./../store/index";
+// context
+import { useAuthContext } from "@/contexts/useAuthContext";
 
 const useAuthentication = () => {
   // form states
   const [pending, setPending] = useState<boolean>(false);
   const [success, setSuccess] = useState<boolean>(false);
 
-  // store state
-  const loginUser = useAuthStore((state) => state.loginUser);
-  const logoutUser = useAuthStore((state) => state.logoutUser);
+  // context state
+  const { dispatch } = useAuthContext();
 
   // signup function
   const signup = ({ email, password, username, thumbNail }: createUserType) => {
@@ -63,7 +62,7 @@ const useAuthentication = () => {
         });
 
         // send user data to store
-        loginUser(user);
+        dispatch({ type: "LOGIN", payload: user });
 
         // update state
         setPending(false);
@@ -77,6 +76,7 @@ const useAuthentication = () => {
           showToast("error", `${error.message}`);
           console.error(error);
         }
+
         // update state
         setPending(false);
         setSuccess(false);
@@ -93,7 +93,7 @@ const useAuthentication = () => {
         const user = userCredential.user;
 
         // send user data to store
-        loginUser(user);
+        dispatch({ type: "LOGIN", payload: user });
 
         // update state
         setPending(false);
@@ -107,6 +107,7 @@ const useAuthentication = () => {
           showToast("error", `${error.message}`);
           console.error(error);
         }
+
         // update state
         setPending(false);
         setSuccess(false);
@@ -120,7 +121,7 @@ const useAuthentication = () => {
     signOut(auth)
       .then(async () => {
         // dispatch logout
-        logoutUser();
+        dispatch({ type: "LOGOUT" });
 
         // update state
         setPending(false);
@@ -134,6 +135,7 @@ const useAuthentication = () => {
           showToast("error", `${error.message}`);
           console.error(error);
         }
+
         // update state
         setPending(false);
         setSuccess(false);

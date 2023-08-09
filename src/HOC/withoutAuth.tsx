@@ -4,8 +4,10 @@
 import { useRouter } from "next/navigation"
 // react imports
 import { useEffect } from 'react'
-// store data
-import { useAuthStore } from "@/store"
+// context data
+import { useAuthContext } from "@/contexts/useAuthContext"
+// components
+import Loader from "@/components/Loader/Loader"
 
 
 export default function withoutAuth(Component: React.ComponentType) {
@@ -14,7 +16,7 @@ export default function withoutAuth(Component: React.ComponentType) {
 
     return () => {
         // get user from store
-        const user = useAuthStore(state => state.user)
+        const { user } = useAuthContext()
 
         if (user?.uid) {
             // If user is not logged in, return login component
@@ -30,5 +32,5 @@ export const Redirect = ({ url }: { url: string }) => {
     useEffect(() => {
         router.push(url);
     }, [router, url]);
-    return <></>;
+    return <Loader />;
 };

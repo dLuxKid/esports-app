@@ -6,7 +6,7 @@ import logo from '@/assets/logo-transparent-svg.svg'
 export default function Footer() {
     return (
         <footer className='w-full'>
-            <div className='bg-pry-white px-[10%] py-[5%] flex-wrap flex justify-between items-start flex-col md:flex-row'>
+            <div className='bg-pry-white px-[10%] py-[5%] flex-wrap flex justify-between items-start gap-6 flex-col md:flex-row'>
                 <div className='flex-start flex-col gap-6 w-full md:max-w-xs'>
                     <Image src={logo} alt='app logo' width={96} height={72} />
                     <p className='tiny-text text-black leading-7'>
