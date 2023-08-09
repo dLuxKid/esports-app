@@ -22,16 +22,16 @@ export default function Navbar() {
                     </ul>
                 </nav>
                 <div className="flex-center gap-4">
-                    <button type='button' className="btn white-outline">
-                        <Link href={'/'}>
+                    <Link href={'/login'}>
+                        <button type='button' className="btn white-outline">
                             Login
-                        </Link>
-                    </button>
-                    <button type='button' className="btn white-btn">
-                        <Link href={'/'}>
+                        </button>
+                    </Link>
+                    <Link href={'/signup'}>
+                        <button type='button' className="btn white-btn">
                             Register
-                        </Link>
-                    </button>
+                        </button>
+                    </Link>
                 </div>
             </div>
         </header>

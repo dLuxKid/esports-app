@@ -1,7 +1,8 @@
+import { State } from '@/types/store'
 import { create } from 'zustand'
 
-interface State { }
-
-export const useStore = create<State>((set) => ({
-
+export const useAuthStore = create<State>()((set) => ({
+    user: null,
+    loginUser: (user) => set(() => ({ user: user })),
+    logoutUser: () => set(() => ({ user: null }))
 }))
