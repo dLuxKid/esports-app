@@ -6,7 +6,7 @@ import React, { createContext, useReducer, useContext, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "@/firebase";
 // types
-import { authActions, authContextType, authState } from "@/types/store";
+import { authActions, authContextType, authState } from "@/types/context";
 
 
 const AuthContext = createContext({} as authContextType)
@@ -41,7 +41,6 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
                 dispatch({ type: 'LOGOUT' })
             }
         });
-        unSubscribe();
         return () => unSubscribe();
     }, []);
 
