@@ -75,7 +75,7 @@ input::placeholder {
 }
 
 .body-text {
-  @apply font-normal text-[1.125rem] leading-[1.25rem];
+  @apply font-normal text-[1.125rem] leading-7;
 }
 
 .tiny-text {
