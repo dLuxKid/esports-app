@@ -23,12 +23,12 @@ export default function Navbar() {
                 </div>
                 {/* DESKTOP NAV */}
                 <nav className="flex-center">
-                    <ul className="flex-between space-x-4 text-pry-white">
-                        <li className="nav-text"><Link href={''}>tournament</Link></li>
-                        <li className="nav-text"><Link href={''}>rules</Link></li>
-                        <li className="nav-text"><Link href={''}>partner</Link></li>
-                        <li className="nav-text"><Link href={''}>teams</Link></li>
-                        <li className="nav-text"><Link href={''}>my teams</Link></li>
+                    <ul className="flex-between gap-6 text-pry-white">
+                        <li className="nav-text"><Link href={'/tournments'}>tournaments</Link></li>
+                        <li className="nav-text"><Link href={'/rules'}>rules</Link></li>
+                        <li className="nav-text"><Link href={'/partner'}>partner</Link></li>
+                        <li className="nav-text"><Link href={'/teams'}>teams</Link></li>
+                        <li className="nav-text"><Link href={'/my-teams'}>my teams</Link></li>
                     </ul>
                 </nav>
                 {user?.uid ?

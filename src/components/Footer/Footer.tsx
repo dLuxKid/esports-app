@@ -46,7 +46,11 @@ export default function Footer() {
                     </ul>
                 </div>
             </div>
-            <div className='bg-pry-black px-[5%] py-4'></div>
+            <div className='bg-pry-black px-[5%] py-4 flex-between flex-wrap gap-4'>
+                <p className='body-text text-white'>KID E-sports</p>
+
+                <p className='tiny-text text-white'>&copy; {new Date().getFullYear()} All Rights Reserved</p>
+            </div>
         </footer>
     )
 }
