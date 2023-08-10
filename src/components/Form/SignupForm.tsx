@@ -62,9 +62,7 @@ export default function SignupForm() {
         }
 
         if (selectedFile.size > 3000000) {
-            showToast("error",
-                "File size must not be larger than 3mb",
-            );
+            showToast("error", "File size must not be larger than 3mb");
             return;
         }
         dispatch({ name: "thumbnail", value: selectedFile });
@@ -135,18 +133,24 @@ export default function SignupForm() {
                 </label>
                 <div className="w-full h-72 relative flex-start flex-col gap-2 mt-4">
                     <p className='body-text'>Profile picture</p>
-                    <label className='w-full border border-[#d4d4d4] flex-center h-full cursor-pointer'>
-                        <span className='btn black-btn flex-center'>Upload image</span>
-                        <input
-                            required
-                            type="file"
-                            title="file"
-                            name="thumbnail"
-                            accept="image/*"
-                            onChange={handleFileChange}
-                            className='hidden'
-                        />
-                    </label>
+                    {
+                        state.thumbnail ?
+                            <img src={URL.createObjectURL(state.thumbnail)} alt="selected picture" className="w-full h-full object-contain object-center" />
+                            :
+                            <label className='w-full border border-[#d4d4d4] flex-center h-full cursor-pointer'>
+                                <span className='btn black-btn flex-center'>Upload image</span>
+                                <input
+                                    required
+                                    type="file"
+                                    title="file"
+                                    name="thumbnail"
+                                    accept="image/*"
+                                    onChange={handleFileChange}
+                                    className='hidden'
+                                />
+                            </label>
+                    }
+                    {state.thumbnail && <button type="button" className="btn black-btn mt-4" onClick={() => dispatch({ name: 'thumbnail', value: null })}>Remove image</button>}
                 </div>
                 <div className='flex-end mt-6'>
                     <button type='submit' className="cta-btn btn" onClick={handleSubmit}>{pending ? <Loader /> : 'Register'}</button>
