@@ -19,7 +19,7 @@ export default function withAuth(Component: React.ComponentType) {
         // get user from store
         const { user } = useAuthContext()
 
-        if (!user?.uid) {
+        if (!user) {
             // If user is not logged in, return login component
             return <Redirect url="/login" />;
         }

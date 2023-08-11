@@ -25,8 +25,7 @@ body::-webkit-scrollbar {
 }
 
 section {
-  min-height: 100vh;
-  padding: 2.5% 5%;
+  padding: 5%;
   width: 100%;
 }
 
@@ -72,11 +71,11 @@ input::placeholder {
 }
 
 .title-text {
-  @apply font-semibold text-5xl;
+  @apply font-semibold text-5xl leading-[50px];
 }
 
 .body-text {
-  @apply font-normal text-[1.125rem] leading-[1.25rem];
+  @apply font-normal text-[1.125rem] leading-7;
 }
 
 .tiny-text {

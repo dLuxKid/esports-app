@@ -1,18 +1,16 @@
-"use client"
 
-// HOC component
-import withoutAuth from "@/HOC/withoutAuth"
 // components
 import CarouselSection from "@/components/CarouselSection/CarouselSection";
+import RulesSection from "@/components/RulesSection/RulesSection";
 
 
-function Home() {
+export default function Home() {
 
   return (
     <main>
       <CarouselSection />
+      <RulesSection />
     </main>
   );
 }
 
-export default withoutAuth(Home)

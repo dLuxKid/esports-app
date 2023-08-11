@@ -41,6 +41,7 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
                 dispatch({ type: 'LOGOUT' })
             }
         });
+        unSubscribe()
         return () => unSubscribe();
     }, []);
 

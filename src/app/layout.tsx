@@ -2,7 +2,6 @@
 
 // next imports
 import type { Metadata } from 'next'
-// react imports 
 // styles
 import '@/styles/globals.css'
 // components
@@ -30,7 +29,7 @@ export default function RootLayout({
       <html lang="en">
         <body>
           <Navbar />
-          <main className='max-w-screen min-h-screen flex-center'>
+          <main className='max-w-screen min-h-screen'>
             {children}
           </main>
           <Footer />
