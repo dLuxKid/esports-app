@@ -8,9 +8,20 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      // backgroundImage: {
-      //   codmbg: "url('/src/assets/codmbg.jpg')",
-      // },
+      keyframes: {
+        fadein: {
+          from: {
+            opacity: "0",
+          },
+          to: {
+            opacity: "1",
+          },
+        },
+      },
+      animation: {
+        fadein: "fadein 1s ease-in-out",
+        fadeinSlow: "fadein 0.5s ease-in-out",
+      },
       colors: {
         "pry-black": "#0D0D0D",
         "pure-black": "#000",
@@ -19,8 +30,8 @@ const config: Config = {
         "pry-green": "#00444D",
       },
       width: {
-        '1/10': '10%'
-      }
+        "1/10": "10%",
+      },
     },
   },
   plugins: [],

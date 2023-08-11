@@ -1,4 +1,4 @@
-export const rules = [
+export const rules: Array<{ category: string; rules: string[] }> = [
   {
     category: "general",
     rules: [
