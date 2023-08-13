@@ -1,20 +1,14 @@
-'use client'
 
 // next imports
 import Image from "next/image";
 import Link from "next/link";
 // image
-import logo from '@/assets/logo-transparent-svg.svg'
-// auth context
-import { useAuthContext } from "@/contexts/useAuthContext";
+import logo from '@/assets/logo-transparent-svg.svg';
 // components
-import Avatar from "../Avatar/Avatar";
+import NavAuth from "./NavAuth";
 
 
 export default function Navbar() {
-
-    const { user } = useAuthContext()
-
     return (
         <header className="bg-pry-black px-[5%] py-4">
             <div className="flex-between">
@@ -24,28 +18,14 @@ export default function Navbar() {
                 {/* DESKTOP NAV */}
                 <nav className="flex-center">
                     <ul className="flex-between gap-6 text-pry-white">
-                        <li className="nav-text"><Link href={'/tournments'}>tournaments</Link></li>
+                        <li className="nav-text"><Link href={'/tournaments'}>tournaments</Link></li>
                         <li className="nav-text"><Link href={'/rules'}>rules</Link></li>
                         <li className="nav-text"><Link href={'/partner'}>partner</Link></li>
                         <li className="nav-text"><Link href={'/teams'}>teams</Link></li>
                         <li className="nav-text"><Link href={'/my-teams'}>my teams</Link></li>
                     </ul>
                 </nav>
-                {user?.uid ?
-                    <Avatar url={user.photoURL} name={user.displayName} /> :
-                    <div className="flex-center gap-4">
-                        <Link href={'/login'}>
-                            <button type='button' className="btn white-outline">
-                                Login
-                            </button>
-                        </Link>
-                        <Link href={'/signup'}>
-                            <button type='button' className="btn white-btn">
-                                Register
-                            </button>
-                        </Link>
-                    </div>
-                }
+                <NavAuth />
             </div>
         </header>
     )

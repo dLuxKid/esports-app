@@ -8,8 +8,8 @@ const data = [
 
 export default function OutlineTable() {
 
-    const tableRowStyles = 'py-2 text-left text-[#ACACAC] uppercase tracking-[1px] tiny-text'
-    const tableDataStyles = 'py-1 body-text'
+    const tableRowStyles = 'py-2 pr-2 text-left text-[#ACACAC] uppercase tracking-[1px] tiny-text w-1/5'
+    const tableDataStyles = 'py-1 pr-2 body-text w-1/5'
 
     return (
         <div className="flex-start flex-col gap-6">
@@ -35,12 +35,12 @@ export default function OutlineTable() {
                     </thead>
                     <tbody className="bg-white">
                         {data.map((item) => (
-                            <tr key={item.id}>
-                                <td className={tableDataStyles}>{item.id}</td>
+                            <tr key={item.id} className="border-b border-b-pry-grey hover:bg-pry-grey cursor-pointer">
+                                <td className={`${tableDataStyles} pl-4`}>{item.id}</td>
                                 <td className={tableDataStyles}>{item.name}</td>
                                 <td className={tableDataStyles}>{item.age}</td>
                                 <td className={tableDataStyles}>{item.city}</td>
-                                <td className="py-1">
+                                <td className="py-2">
                                     <button type="button" className="text-center font-semibold py-2 px-9 transition-all duration-300 hover:opacity-90 cta-btn h-12">Check in</button>
                                 </td>
                             </tr>
