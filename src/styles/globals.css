@@ -96,7 +96,7 @@ input::placeholder {
 }
 
 .cta-btn {
-  @apply border-0 bg-[#00444D] text-[0.9375rem] leading-4 font-bold text-pry-white;
+  @apply border-0 bg-pry-green text-pry-white hover:bg-pry-white hover:text-pry-green hover:border hover:border-pry-green text-[0.9375rem] leading-4 font-bold;
 }
 
 .btn {
