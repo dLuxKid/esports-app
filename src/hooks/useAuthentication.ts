@@ -3,7 +3,7 @@
 // react imports
 import { useState } from "react";
 // firebase imports
-import { auth, storage } from "@/firebase";
+import { auth, db, storage } from "@/firebase";
 import { FirebaseError } from "firebase/app";
 import {
   createUserWithEmailAndPassword,
@@ -11,9 +11,14 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
+import { collection, doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 // types
-import { createUserType, loginUserType } from "./../types/authentication.d";
+import {
+  createUserType,
+  loginUserType,
+  teamType,
+} from "./../types/authentication.d";
 // data
 import { firebaseAuthError } from "@/data/firebaseAuthErrors";
 // toast
@@ -30,7 +35,13 @@ const useAuthentication = () => {
   const { dispatch } = useAuthContext();
 
   // signup function
-  const signup = ({ email, password, username, thumbNail }: createUserType) => {
+  const signup = ({
+    email,
+    password,
+    username,
+    thumbNail,
+    accountType,
+  }: createUserType) => {
     setPending(true);
     setSuccess(false);
 
@@ -59,6 +70,14 @@ const useAuthentication = () => {
         await updateProfile(user, {
           displayName: username,
           photoURL: url,
+        });
+
+        // create user document
+        await setDoc(doc(db, "users", user.uid), {
+          accountType: accountType,
+          displayName: username,
+          email: email,
+          photoUrl: url,
         });
 
         // send user data to store
@@ -142,7 +161,60 @@ const useAuthentication = () => {
       });
   };
 
-  return { signup, login, logout, success, pending };
+  const registerTeam = async ({
+    name,
+    password,
+    sqaudType,
+    thumbnail,
+  }: teamType) => {
+    setPending(true);
+    setSuccess(false);
+
+    try {
+      // create image refrence
+      const uploadPath = `thumbnails/team logos/${thumbnail?.name}`;
+      const projectStorageRef = ref(storage, uploadPath);
+
+      if (thumbnail) {
+        // Convert the thumbnail File to Blob
+        const thumbnailBlob = new Blob([thumbnail], {
+          type: thumbnail?.type,
+        });
+
+        // upload to cloud
+        await uploadBytes(projectStorageRef, thumbnailBlob);
+      }
+
+      // get the photo url
+      const url = await getDownloadURL(ref(projectStorageRef));
+
+      // create user document
+      await setDoc(doc(collection(db, "team")), {
+        sqaudType,
+        teamName: name,
+        pin: password,
+        photoUrl: url,
+      });
+
+      // update state
+      setPending(false);
+      setSuccess(true);
+    } catch (error: any) {
+      // handle error
+      if (error instanceof FirebaseError) {
+        showToast("error", `${firebaseAuthError[error.code]}`);
+      } else {
+        showToast("error", `${error.message}`);
+        console.error(error);
+      }
+
+      // update state
+      setPending(false);
+      setSuccess(false);
+    }
+  };
+
+  return { signup, login, logout, registerTeam, success, pending };
 };
 
 export default useAuthentication;

@@ -15,7 +15,7 @@ function Signup() {
             <div className='flex-between gap-[2.5%]'>
                 <SignupForm />
                 <div className='w-1/4 h-full hidden md:block'>
-                    <Image src={img} alt='codm player' className='object-fill object-center bg-clip-content' />
+                    <Image src={img} alt='codm player' className='h-screen object-fill object-center bg-clip-content' />
                 </div>
             </div>
         </section>

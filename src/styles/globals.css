@@ -15,8 +15,8 @@
 }
 
 body {
-  scrollbar-width: none;
   -ms-overflow-style: none;
+  scrollbar-width: none;
   font-family: "Karla", sans-serif;
 }
 
@@ -55,6 +55,18 @@ input::placeholder {
   font-weight: 400;
   font-size: 1rem;
   color: #000;
+}
+
+button:disabled {
+  background-color: #d4d4d4 !important;
+  color: #000;
+}
+
+button:disabled:hover {
+  background-color: #d4d4d4 !important;
+  color: #000;
+  outline: 0;
+  border: 0;
 }
 
 /* TYPOGRAPHY */
@@ -100,7 +112,7 @@ input::placeholder {
 }
 
 .btn {
-  @apply h-[3.75rem] min-w-[10rem] text-center font-semibold py-2 px-9 transition-all duration-300 hover:opacity-90;
+  @apply h-[3.75rem] min-w-[10rem] text-center font-semibold py-2 px-9 transition-all duration-300 hover:opacity-90 disabled:cursor-wait;
 }
 
 /* FLEX TEMPLATE */

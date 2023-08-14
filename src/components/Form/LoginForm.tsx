@@ -97,7 +97,7 @@ export default function LoginForm() {
                     <span className="top-5 right-4 absolute cursor-pointer" onClick={() => setPasswordVisible(prev => !prev)}><Icon icon={!passwordVisible ? 'ph:eye-closed-thin' : "ph:eye-thin"} width={24} height={24} color="#d4d4d4" /></span>
                 </label>
                 <div className='flex justify-start items-center mt-6'>
-                    <button type='submit' className="cta-btn btn" onClick={handleSubmit}>{pending ? <Loader /> : 'Log in'}</button>
+                    <button type='submit' className="cta-btn btn" disabled={pending} onClick={handleSubmit}>{pending ? <Loader /> : 'Log in'}</button>
                     <span className='ml-8 tiny-text text-[#d4d4d4] cursor-pointer'>Forget Password?</span>
                 </div>
             </form>
