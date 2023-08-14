@@ -19,7 +19,7 @@ function Login() {
             <div className='flex-between'>
                 <LoginForm />
                 <div className='w-1/4 hidden md:block h-auto'>
-                    <Image src={img} alt='codm player' className='w-full h-full object-fill object-center bg-clip-content' />
+                    <Image src={img} alt='codm player' className='w-full h-screen object-fill object-center bg-clip-content' />
                 </div>
             </div>
         </section>

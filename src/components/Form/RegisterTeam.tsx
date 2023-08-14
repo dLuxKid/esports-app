@@ -14,23 +14,21 @@ import { showToast } from "@/functions/toast";
 import Loader from "../Loader/Loader";
 
 const initialState = {
-    username: "",
-    email: "",
+    teamname: "",
     password: "",
-    accountType: '',
+    squadType: '',
     thumbnail: null,
 };
 
 type authState = {
-    username: string;
-    email: string;
+    teamname: string;
     password: string;
-    accountType: string;
+    squadType: string;
     thumbnail: File | null;
 };
 
 type authActions =
-    | { name: 'username' | 'email' | 'password' | 'accountType'; value: string }
+    | { name: 'teamname' | 'password' | 'squadType'; value: string }
     | { name: "thumbnail"; value: File | null };
 
 const authReducer = (state: authState, action: authActions) => {
@@ -38,22 +36,20 @@ const authReducer = (state: authState, action: authActions) => {
 };
 
 const options: Array<{ value: string, label: string }> = [
-    { value: 'player', label: 'Player' },
-    { value: 'owner', label: 'Team Owner' },
-    { value: 'host', label: 'Tournament Host' },
+    { value: 'duo', label: 'DUO' },
+    { value: 'squad', label: 'SQUAD' },
 ];
 
-export default function SignupForm() {
-    const [passwordVisible, setPasswordVisible] = useState<boolean>(false)
+export default function RegisterTeam() {
 
     const [state, dispatch] = useReducer(authReducer, initialState);
 
-    const { signup, pending, success } = useAuthentication();
+    const { registerTeam, pending, success } = useAuthentication();
 
     const router = useRouter()
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.name === 'email' || e.target.name === 'password' || e.target.name === 'username') dispatch({ name: e.target.name, value: e.target.value })
+        if (e.target.name === 'teamname' || e.target.name === 'password') dispatch({ name: e.target.name, value: e.target.value })
     };
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -79,68 +75,57 @@ export default function SignupForm() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (!state.email || !state.password || !state.username || !state.thumbnail || !state.accountType) {
+        if (!state.teamname || !state.password || !state.squadType || !state.thumbnail) {
             showToast('error', 'Fill all form values')
             return
         }
 
-        signup({
-            email: state.email,
+        registerTeam({
+            name: state.teamname,
             password: state.password,
-            username: state.username,
-            thumbNail: state.thumbnail,
-            accountType: state.accountType
-        });
+            sqaudType: state.squadType,
+            thumbnail: state.thumbnail
+        })
+
+
     };
 
     useEffect(() => {
         if (success) {
-            router.push("/")
-            showToast('success', 'Registration successful')
+            // router.push("/my-team")
+            showToast('success', 'Team successfully registered')
         }
     }, [success]);
 
     return (
         <div className='w-full md:w-3/4 flex-start flex-col gap-8 p-[5%] bg-pry-grey rounded-lg'>
-            <div className="flex-start">
-                <h1 className="title-text">Register</h1>
+            <div className="flex-start flex-col gap-4">
+                <h1 className="title-text text-pry-black">Your Team</h1>
+                <p className="body-text text-pry-black">Register your team!</p>
             </div>
             <form className='w-full max-w-xl flex items-stretch justify-center gap-4 md:gap-6 flex-col'>
                 <label className="w-full h-[2.8125rem] relative">
                     <input
                         required
                         type="text"
-                        title="username"
-                        name="username"
-                        placeholder="username"
-                        value={state.username}
+                        title="team name"
+                        name="teamname"
+                        placeholder="team name"
+                        value={state.teamname}
                         onChange={handleChange}
                     />
                 </label>
                 <label className="w-full h-[2.8125rem] relative">
                     <input
                         required
-                        type="text"
-                        title="email"
-                        name="email"
-                        placeholder="e-mail"
-                        value={state.email}
-                        onChange={handleChange}
-                    />
-                </label>
-                <label className='relative w-full h-[2.8125rem]'>
-                    <input
-                        required
-                        type={passwordVisible ? 'text' : "password"}
+                        type="tel"
                         title="password"
                         name="password"
-                        placeholder="Enter your password"
+                        placeholder="Team pin"
+                        maxLength={4}
                         value={state.password}
                         onChange={handleChange}
                     />
-                    <span className="top-5 right-4 absolute cursor-pointer" onClick={() => setPasswordVisible(prev => !prev)}>
-                        <Icon icon={!passwordVisible ? 'ph:eye-closed-thin' : "ph:eye-thin"} width={24} height={24} color="#d4d4d4" />
-                    </span>
                 </label>
                 <label className="w-full flex-start gap-4">
                     {
@@ -150,8 +135,8 @@ export default function SignupForm() {
                                     <input
                                         type="radio"
                                         value={item.value}
-                                        checked={state.accountType === item.value}
-                                        onChange={() => dispatch({ name: 'accountType', value: item.value })}
+                                        checked={state.squadType === item.value}
+                                        onChange={() => dispatch({ name: 'squadType', value: item.value })}
                                         className="cursor-pointer appearance-none checked:bg-pry-black checked:border-none focus:outline-none"
                                     />
                                 </div>
@@ -159,8 +144,8 @@ export default function SignupForm() {
                             </div>
                         ))}
                 </label>
-                <div className="w-full h-72 relative flex-start flex-col gap-2 mt-4">
-                    <p className='body-text'>Profile picture</p>
+                <div className="w-full h-72 relative flex-start flex-col gap-2">
+                    <p className='body-text'>Team Logo</p>
                     {
                         state.thumbnail ?
                             <img src={URL.createObjectURL(state.thumbnail)} alt="selected picture" className="w-full h-full object-contain object-center" />
