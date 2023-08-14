@@ -19,7 +19,7 @@ export default function CarouselSection() {
     return (
         <div className="flex">
             <div
-                className='flex flex-col text-white p-20 space-y-32 justify-center w-3/5 bg-zinc-700 bg-cover animate-fadein'
+                className='flex flex-col text-white p-20 space-y-32 justify-center bg-zinc-700 bg-cover animate-fadein'
                 style={{
                     backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 100%), url('${backgroundImage}')`
                 }}
@@ -54,7 +54,6 @@ export default function CarouselSection() {
                     </li>
                 </ol>
             </div>
-            <div className={`w-2/5 bg-zinc-300 ${styles.banner} bg-contain`}></div>
         </div>
     )
 }
