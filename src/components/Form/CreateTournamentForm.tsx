@@ -5,45 +5,43 @@ import { useRouter } from "next/navigation";
 // react imports
 import React, { useEffect, useReducer } from "react";
 // hooks
-import useAddToCollection from "@/hooks/useAddToCollection";
 // toasts
 import { showToast } from "@/functions/toast";
 // components
 import Loader from "../Loader/Loader";
-// firebase
-import { Timestamp } from "firebase/firestore";
 
 const initialState = {
     tournamentName: "",
     code: "",
-    squadType: '',
+    mode: '',
     map: '',
     desc: '',
     number: '',
     discord: '',
     twitter: '',
     thumbnail: null,
-    startDate: null,
-    time: null,
+    date: '',
+    time: ''
 };
 
 type authState = {
     tournamentName: string;
     code: string;
-    squadType: string;
+    mode: string;
     map: string;
     desc: string;
     number: string;
     discord: string;
     twitter: string;
     thumbnail: File | null;
-    startDate: Timestamp | null,
-    time: Timestamp | null,
+    date: string,
+    time: string
 };
 
 type authActions =
     | { name: string; value: string }
-    | { name: "thumbnail"; value: File | null };
+    | { name: "thumbnail"; value: File | null }
+    | { name: 'date'; value: Date }
 
 const authReducer = (state: authState, action: authActions) => {
     return { ...state, [action.name]: action.value };
@@ -100,6 +98,7 @@ export default function CreateTournamentForm() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         console.log(state)
+
     }
 
     useEffect(() => {
@@ -115,7 +114,7 @@ export default function CreateTournamentForm() {
             <div className="flex-center">
                 <h1 className="title-text text-pry-black">Register your tournament</h1>
             </div>
-            <form className='w-full max-w-xl flex items-stretch justify-center gap-4 md:gap-6 flex-col'>
+            <form className='w-full max-w-lg flex items-stretch justify-center gap-4 md:gap-6 flex-col'>
                 <label className="relative">
                     <input
                         required
@@ -140,7 +139,7 @@ export default function CreateTournamentForm() {
                 </label>
                 <div>
                     <p className="body-text">
-                        Squad options
+                        Game Mode
                     </p>
                     <label className="w-full flex-start gap-4">
                         {
@@ -150,8 +149,8 @@ export default function CreateTournamentForm() {
                                         <input
                                             type="radio"
                                             value={item.value}
-                                            checked={state.squadType === item.value}
-                                            onChange={() => dispatch({ name: 'squadType', value: item.value })}
+                                            checked={state.mode === item.value}
+                                            onChange={() => dispatch({ name: 'mode', value: item.value })}
                                             className="cursor-pointer appearance-none checked:bg-pry-black checked:border-none focus:outline-none"
                                         />
                                     </div>
@@ -182,6 +181,32 @@ export default function CreateTournamentForm() {
                             ))}
                     </label>
                 </div>
+                <label className="w-full relative flex-start gap-4">
+                    <span className="body-text my-auto">
+                        Date:
+                    </span>
+                    <input
+                        className="h-10 w-40 py-0"
+                        required
+                        type="date"
+                        name="date"
+                        value={state.date}
+                        onChange={(e) => dispatch({ name: 'date', value: e.target.value })}
+                    />
+                </label>
+                <label className="w-full relative flex-start gap-4">
+                    <span className="body-text my-auto">
+                        Time:
+                    </span>
+                    <input
+                        className="h-10 w-28 py-0"
+                        required
+                        type="time"
+                        name="time"
+                        value={state.time}
+                        onChange={(e) => dispatch({ name: 'time', value: e.target.value })}
+                    />
+                </label>
                 <div className="w-64 h-64 relative flex-start flex-col gap-2">
                     <p className='body-text'>Tournament Logo</p>
                     {
