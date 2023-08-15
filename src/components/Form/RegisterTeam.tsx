@@ -2,12 +2,10 @@
 
 // next imports
 import { useRouter } from "next/navigation";
-// icons
-import { Icon } from '@iconify/react';
 // react imports
-import React, { useState, useReducer, useEffect } from "react";
+import React, { useEffect, useReducer } from "react";
 // hooks
-import useAuthentication from "@/hooks/useAuthentication";
+import useAddToCollection from "@/hooks/useAddToCollection";
 // toasts
 import { showToast } from "@/functions/toast";
 // components
@@ -44,9 +42,10 @@ export default function RegisterTeam() {
 
     const [state, dispatch] = useReducer(authReducer, initialState);
 
-    const { registerTeam, pending, success } = useAuthentication();
-
     const router = useRouter()
+
+    const { registerTeam, pending, success } = useAddToCollection();
+
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.name === 'teamname' || e.target.name === 'password') dispatch({ name: e.target.name, value: e.target.value })

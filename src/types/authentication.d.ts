@@ -6,13 +6,6 @@ export interface createUserType {
   thumbNail: File;
 }
 
-export interface teamType {
-  name: string;
-  password: string;
-  sqaudType: string;
-  thumbnail: File;
-}
-
 export interface loginUserType {
   email: string;
   password: string;

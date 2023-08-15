@@ -16,7 +16,7 @@ function Login() {
             <div className='absolute top-0 left-0 right-0 bottom-0 -z-10'>
                 <Image src={codmbg} alt='bg' className='h-full w-full object-fill object-center opacity-80' />
             </div>
-            <div className='flex-between'>
+            <div className='flex-between w-full'>
                 <LoginForm />
                 <div className='w-1/4 hidden md:block h-auto'>
                     <Image src={img} alt='codm player' className='w-full h-screen object-fill object-center bg-clip-content' />

@@ -19,8 +19,6 @@ import Loader from "@/components/Loader/Loader";
 import { showToast } from "@/functions/toast";
 
 function Register() {
-
-    const [userData, setUserData] = useState<any>(null)
     const [loading, setLoading] = useState<boolean>(true)
 
     const router = useRouter()
@@ -47,7 +45,6 @@ function Register() {
                     showToast('warning', `This is a ${data.accountType} account, use an owner account to register team`)
                     router.push('/')
                 }
-                setUserData(data)
             });
 
             // set loading to false

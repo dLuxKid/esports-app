@@ -1,4 +1,6 @@
-export const rules: Array<{ category: string; rules: string[] }> = [
+type ruleType = Array<{ category: string; rules: string[] }>;
+
+export const generalRules: ruleType = [
   {
     category: "general",
     rules: [
@@ -86,6 +88,86 @@ export const rules: Array<{ category: string; rules: string[] }> = [
     category: "communication and updates",
     rules: [
       "Participants should regularly check communication channels for updates, including schedules and rule modifications.",
+    ],
+  },
+];
+
+export const brRules = [
+  {
+    category: "general",
+    rules: [
+      "TOXICITY will NOT be allowed in the lobby chat otherwise your team will be removed.",
+      "All Teams must be in their assigned spot in the lobby at start times or they will be removed.",
+      "Partial squads will be removed from the lobby before each game.",
+      "Team Leaders must be active and will be responsible to have the lobby info.",
+    ],
+  },
+  {
+    category: "fair play",
+    rules: [
+      "Absolutely NO use of Emulators, Keyboard/Mouse, or Controllers at any time.",
+      "Absolutely NO malicious spectating.",
+      "Absolutely NO account sharing.",
+      "Absolutely NO teaming or stream sniping.",
+      "Absolutely NO exiting the game before you are about to get thirsted.",
+      "If no Elite mod is being informed about your team pulling out before lobby 1 starts, Your team results will still be calculated.",
+    ],
+  },
+  {
+    category: "allowed classes",
+    rules: [
+      "NINJA",
+      "MEDIC",
+      "TRICKSTER",
+      "REFITTER",
+      "SCOUT",
+      "NOTE: ANY CLASS THAT IS NOT ALLOWED, IS BANNED.",
+    ],
+  },
+  {
+    category: "banned guns and skins",
+    rules: [
+      "All ballistics items",
+      "war machine",
+      "Artic-50 Exotic",
+      "mythic by15",
+      "Echo",
+      "Hs2126 burst shotgun",
+      "Rytec Amr (Thermite Sniper)",
+      "Striker",
+      "Na45",
+      "Thumper",
+      "SmrS",
+      "M21",
+      "Fennec",
+      "Mac 10",
+      "Hso4",
+      "oden",
+      "Jak 12",
+      "switchblade",
+      "Customs",
+      "BANNED VEHICLES",
+      "Tank",
+      "jackel",
+      "truck",
+      "Your team will receive a 50 point deduction per use of any of these items in game. If it is changed on first revive, you won’t receive any point deduction.",
+    ],
+  },
+  {
+    category: "scoring system",
+    rules: [
+      "1st Place : 20",
+      "2nd Place : 14",
+      "3rd Place : 10",
+      "4th Place : 8",
+      "5th Place : 7",
+      "6th Place : 6",
+      "7th Place : 5",
+      "8th Place : 4",
+      "9th Place : 3",
+      "10th - 15th Place : 2",
+      "15th - 23th Place : 1",
+      "+3 Points Per Kill",
     ],
   },
 ];

@@ -11,14 +11,10 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { collection, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 // types
-import {
-  createUserType,
-  loginUserType,
-  teamType,
-} from "./../types/authentication.d";
+import { createUserType, loginUserType } from "./../types/authentication.d";
 // data
 import { firebaseAuthError } from "@/data/firebaseAuthErrors";
 // toast
@@ -161,60 +157,7 @@ const useAuthentication = () => {
       });
   };
 
-  const registerTeam = async ({
-    name,
-    password,
-    sqaudType,
-    thumbnail,
-  }: teamType) => {
-    setPending(true);
-    setSuccess(false);
-
-    try {
-      // create image refrence
-      const uploadPath = `thumbnails/team logos/${thumbnail?.name}`;
-      const projectStorageRef = ref(storage, uploadPath);
-
-      if (thumbnail) {
-        // Convert the thumbnail File to Blob
-        const thumbnailBlob = new Blob([thumbnail], {
-          type: thumbnail?.type,
-        });
-
-        // upload to cloud
-        await uploadBytes(projectStorageRef, thumbnailBlob);
-      }
-
-      // get the photo url
-      const url = await getDownloadURL(ref(projectStorageRef));
-
-      // create user document
-      await setDoc(doc(collection(db, "team")), {
-        sqaudType,
-        teamName: name,
-        pin: password,
-        photoUrl: url,
-      });
-
-      // update state
-      setPending(false);
-      setSuccess(true);
-    } catch (error: any) {
-      // handle error
-      if (error instanceof FirebaseError) {
-        showToast("error", `${firebaseAuthError[error.code]}`);
-      } else {
-        showToast("error", `${error.message}`);
-        console.error(error);
-      }
-
-      // update state
-      setPending(false);
-      setSuccess(false);
-    }
-  };
-
-  return { signup, login, logout, registerTeam, success, pending };
+  return { signup, login, logout, success, pending };
 };
 
 export default useAuthentication;

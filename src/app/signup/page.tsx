@@ -12,7 +12,7 @@ import withoutAuth from "@/HOC/withoutAuth";
 function Signup() {
     return (
         <section className='relative bg-pry-white flex-center min-h-[90vh]'>
-            <div className='flex-between gap-[2.5%]'>
+            <div className='flex-between w-full gap-[2.5%]'>
                 <SignupForm />
                 <div className='w-1/4 h-full hidden md:block'>
                     <Image src={img} alt='codm player' className='h-screen object-fill object-center bg-clip-content' />
