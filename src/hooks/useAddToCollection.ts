@@ -104,17 +104,24 @@ export default function useAddToCollection() {
   };
 
   const createTournament = async ({
-    name,
-    password,
-    sqaudType,
+    tournamentName,
+    code,
+    mode,
+    map,
+    desc,
+    number,
+    discord,
+    twitter,
     thumbnail,
+    date,
+    time,
   }: tournamentType) => {
     setPending(true);
     setSuccess(false);
 
     try {
       // create image refrence
-      const uploadPath = `thumbnails/team logos/${thumbnail?.name}`;
+      const uploadPath = `thumbnails/tournament logos/${thumbnail?.name}`;
       const projectStorageRef = ref(storage, uploadPath);
 
       if (thumbnail) {
@@ -128,15 +135,22 @@ export default function useAddToCollection() {
       }
 
       // get the photo url
-      const url = await getDownloadURL(ref(projectStorageRef));
+      const logo = await getDownloadURL(ref(projectStorageRef));
 
       // create tournament document
       await setDoc(doc(collection(db, "tournaments")), {
         id: user.uid,
-        sqaudType,
-        teamName: name,
-        pin: password,
-        photoUrl: url,
+        tournamentName,
+        code,
+        mode,
+        map,
+        desc,
+        number,
+        discord,
+        twitter,
+        logo,
+        date,
+        time,
       });
 
       // update state
@@ -157,5 +171,5 @@ export default function useAddToCollection() {
     }
   };
 
-  return { registerTeam, pending, success };
+  return { registerTeam, createTournament, pending, success };
 }

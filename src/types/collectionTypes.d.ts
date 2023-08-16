@@ -14,6 +14,7 @@ export interface tournamentType {
   number: string;
   discord: string;
   twitter: string;
-  thumbnail: File | null;
-  date: Date;
+  thumbnail: File;
+  date: string;
+  time: string;
 }

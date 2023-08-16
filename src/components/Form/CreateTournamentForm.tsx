@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 // react imports
 import React, { useEffect, useReducer } from "react";
 // hooks
+import useAddToCollection from "@/hooks/useAddToCollection";
 // toasts
 import { showToast } from "@/functions/toast";
 // components
@@ -62,10 +63,7 @@ const mapType: radioType = [
 
 export default function CreateTournamentForm() {
 
-    const pending = false
-    const success = false
-
-    // const { pending, success } = useAddToCollection()
+    const { createTournament, pending, success } = useAddToCollection()
 
     const router = useRouter()
 
@@ -97,14 +95,19 @@ export default function CreateTournamentForm() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
-        console.log(state)
 
+        if (!state.code || !state.date || !state.desc || !state.discord || !state.map || !state.mode || !state.number || !state.thumbnail || !state.time || !state.tournamentName || !state.twitter) {
+            showToast('error', 'Fill all form values')
+            return
+        }
+
+        createTournament({ ...state, thumbnail: state.thumbnail })
     }
 
     useEffect(() => {
         if (success) {
             router.push("/tournaments")
-            showToast('success', 'Team successfully registered')
+            showToast('success', 'Tournament created')
         }
     }, [success]);
 
@@ -280,7 +283,5 @@ export default function CreateTournamentForm() {
                 </div>
             </form>
         </div>
-
-
     )
 }

@@ -25,9 +25,9 @@ export default function RootLayout({
 }) {
 
   return (
-    <AuthContextProvider>
-      <html lang="en">
-        <body>
+    <html lang="en">
+      <body>
+        <AuthContextProvider>
           <Navbar />
           <main className='max-w-screen min-h-screen'>
             {children}
@@ -45,8 +45,8 @@ export default function RootLayout({
             pauseOnHover
             theme="colored"
           />
-        </body>
-      </html>
-    </AuthContextProvider>
+        </AuthContextProvider>
+      </body>
+    </html>
   )
 }

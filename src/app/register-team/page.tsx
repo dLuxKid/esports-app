@@ -1,58 +1,17 @@
 'use client'
 
 // next imports
-import { useRouter } from "next/navigation";
 import Image from "next/image";
-// react imports
-import { useEffect, useState } from "react";
 // images
-import img from '@/assets/codm6.jpg'
+import img from '@/assets/codm6.jpg';
 // components
 import RegisterTeam from "@/components/Form/RegisterTeam";
-// firebase
-import { collection, getDocs, query, where } from "firebase/firestore";
-import { db } from "@/firebase";
-// context
-import { useAuthContext } from "@/contexts/useAuthContext";
-// component
 import Loader from "@/components/Loader/Loader";
-import { showToast } from "@/functions/toast";
+// hooks
+import useAccountCheck from "@/hooks/useAccountCheck";
 
 function Register() {
-    const [loading, setLoading] = useState<boolean>(true)
-
-    const router = useRouter()
-
-    const { user } = useAuthContext()
-
-    useEffect(() => {
-        (async function fetchData() {
-            if (!user) return
-            // set loading state
-            setLoading(true);
-            // query firebase db
-            const q = query(
-                collection(db, "users"),
-                where("email", "==", user.email)
-            );
-            const querySnapshot = await getDocs(q);
-
-            // function to listen for logs
-            querySnapshot.docs.map((doc) => {
-                const data = doc.data();
-
-                if (data.accountType === 'player' || data.accountType === 'host') {
-                    showToast('warning', `This is a ${data.accountType} account, use an owner account to register team`)
-                    router.push('/')
-                }
-            });
-
-            // set loading to false
-            setTimeout(() => {
-                setLoading(false);
-            }, 1000);
-        })();
-    }, [user])
+    const { loading } = useAccountCheck('owner', 'Use an owner account to register team')
 
     if (loading) {
         return (

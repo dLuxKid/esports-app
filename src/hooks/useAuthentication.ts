@@ -46,7 +46,7 @@ const useAuthentication = () => {
         const user = userCredentials.user;
 
         // create image refrence
-        const uploadPath = `thumbnails/${user.uid}/${thumbNail?.name}`;
+        const uploadPath = `thumbnails/users/${user.uid}/${thumbNail?.name}`;
         const projectStorageRef = ref(storage, uploadPath);
 
         if (thumbNail) {

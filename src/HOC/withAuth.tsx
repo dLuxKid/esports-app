@@ -17,13 +17,15 @@ export default function withAuth(Component: React.ComponentType) {
 
     return () => {
         // get user from store
-        const { user } = useAuthContext()
+        const { user, authIsReady } = useAuthContext()
 
-        if (!user) {
+        if (!user && authIsReady) {
             // If user is not logged in, return login component
             return <Redirect url="/login" />;
         }
+
         return <Component {...props} {...otherProps} />
+
     }
 }
 

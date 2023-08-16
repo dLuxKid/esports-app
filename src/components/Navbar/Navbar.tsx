@@ -21,8 +21,7 @@ export default function Navbar() {
                         <li className="nav-text"><Link href={'/tournaments'}>tournaments</Link></li>
                         <li className="nav-text"><Link href={'/rules'}>rules</Link></li>
                         <li className="nav-text"><Link href={'/partner'}>partner</Link></li>
-                        <li className="nav-text"><Link href={'/teams'}>teams</Link></li>
-                        <li className="nav-text"><Link href={'/my-team'}>my teams</Link></li>
+                        <li className="nav-text"><Link href={'/my-team'}>my team</Link></li>
                     </ul>
                 </nav>
                 <NavAuth />
