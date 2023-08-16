@@ -11,6 +11,7 @@ import Loader from "@/components/Loader/Loader";
 import useAccountCheck from "@/hooks/useAccountCheck";
 
 function Register() {
+
     const { loading } = useAccountCheck('owner', 'Use an owner account to register team')
 
     if (loading) {

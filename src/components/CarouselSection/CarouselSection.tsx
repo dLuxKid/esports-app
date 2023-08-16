@@ -3,12 +3,12 @@
 // hooks
 import useBackgroundImage from "@/hooks/useBackgroundImage";
 // styles
-import styles from "@/styles/carousel.module.css";
-
+import Link from "next/link";
 
 // images
 const images = [
-    "/assets/hero-background.jpg", "/assets/hero2.jpg",
+    "/assets/hero-background.jpg",
+    "/assets/hero2.jpg",
     "/assets/hero3.jpg"
 ]
 
@@ -24,35 +24,15 @@ export default function CarouselSection() {
                     backgroundImage: `linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 100%), url('${backgroundImage}')`
                 }}
             >
-                <div className="space-y-1 flex flex-col">
-                    <p className="font-extralight">09/08</p>
-                    <h1 className="banner-text w-4/5">CODM Tournament #1</h1>
-                    <div>
-                        <button type="button" className="btn white-btn p-4">
+                <div className="space-y-8 flex-start flex-col">
+                    <h1 className="title-text w-4/5">Unleash Your Competitive Spirit in the Ultimate Esports Arena</h1>
+                    <p className="body-text w-3/5">Enter the world of esports, where skill and strategy collide in epic tournaments. Join a vibrant community, showcase your gaming prowess, and chase victory on a global stage. Elevate your gaming journey and forge unbreakable alliances. Your journey to esports glory starts now.</p>
+                    <Link href={'/tournaments'}>
+                        <button type="button" className="btn white-btn">
                             Register
                         </button>
-                    </div>
+                    </Link>
                 </div>
-                <ol className={`${styles.list} flex space-x-14`}>
-                    <li className={`${styles.listitem} flex`}>
-                        <span>
-                            <div className="text-[0.9375rem] font-semibold">Tournament #1</div>
-                            <p className="text-[0.9375rem] font-normal">Here is a brief description...</p>
-                        </span>
-                    </li>
-                    <li className={`${styles.listitem} flex opacity-25`}>
-                        <span>
-                            <div className="text-[0.9375rem] font-semibold">Tournament #1</div>
-                            <p className="text-[0.9375rem] font-normal">Here is a brief description...</p>
-                        </span>
-                    </li>
-                    <li className={`${styles.listitem} flex`}>
-                        <span>
-                            <div className="text-[0.9375rem] font-semibold">Tournament #1</div>
-                            <p className="text-[0.9375rem] font-normal">Here is a brief description...</p>
-                        </span>
-                    </li>
-                </ol>
             </div>
         </div>
     )
