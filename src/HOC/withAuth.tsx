@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 // context data
 import { useAuthContext } from "@/contexts/useAuthContext"
 // components
-import Loader from "@/components/Loader/Loader"
+import PageLoader from "@/components/PageLoader/PageLoader"
 
 
 export default function withAuth(Component: React.ComponentType) {
@@ -35,5 +35,5 @@ export const Redirect = ({ url }: { url: string }) => {
     useEffect(() => {
         router.push(url);
     }, [router, url]);
-    return <Loader />;
+    return <PageLoader />;
 };

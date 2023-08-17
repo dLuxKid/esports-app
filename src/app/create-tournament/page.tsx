@@ -1,23 +1,22 @@
 'use client'
 
-// hooks
-import useAccountCheck from "@/hooks/useAccountCheck";
+
 // components
 import CreateTournamentForm from "@/components/Form/CreateTournamentForm";
-import Loader from "@/components/Loader/Loader";
+import useAccountCheck from "@/hooks/useAccountCheck";
+import PageLoader from "@/components/PageLoader/PageLoader";
+// HOC
+import withAuth from "@/HOC/withAuth";
+// hook
 
 
 
-export default function CreateTournament() {
-    const { loading } = useAccountCheck('host', 'Only host accounts can create tournaments')
 
-    if (loading) {
-        return (
-            <div className="flex-center w-full h-screen">
-                <Loader />
-            </div>
-        )
-    }
+function CreateTournament() {
+    const { loading } = useAccountCheck('host', 'Use an host account to create tournament')
+
+    if (loading) return <PageLoader />
+
 
     return (
         <section className="bg-pry-grey">
@@ -25,3 +24,6 @@ export default function CreateTournament() {
         </section>
     )
 }
+
+
+export default withAuth(CreateTournament)

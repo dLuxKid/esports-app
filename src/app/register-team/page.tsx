@@ -6,21 +6,16 @@ import Image from "next/image";
 import img from '@/assets/codm6.jpg';
 // components
 import RegisterTeam from "@/components/Form/RegisterTeam";
-import Loader from "@/components/Loader/Loader";
-// hooks
+import PageLoader from "@/components/PageLoader/PageLoader";
+// HOC
+import withAuth from "@/HOC/withAuth";
+// hook
 import useAccountCheck from "@/hooks/useAccountCheck";
 
 function Register() {
+    const { loading } = useAccountCheck('owner', 'Use an owner account to create tournament')
 
-    const { loading } = useAccountCheck('owner', 'Use an owner account to register team')
-
-    if (loading) {
-        return (
-            <div className="flex-center w-full h-screen">
-                <Loader />
-            </div>
-        )
-    }
+    if (loading) return <PageLoader />
 
     return (
         <section className='relative bg-pry-grey flex-center min-h-[90vh]'>
@@ -35,4 +30,4 @@ function Register() {
 }
 
 
-export default Register
+export default withAuth(Register)

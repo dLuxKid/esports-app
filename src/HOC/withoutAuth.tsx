@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 // context data
 import { useAuthContext } from "@/contexts/useAuthContext"
 // components
-import Loader from "@/components/Loader/Loader"
+import PageLoader from "@/components/PageLoader/PageLoader"
 
 
 export default function withoutAuth(Component: React.ComponentType) {
@@ -16,9 +16,9 @@ export default function withoutAuth(Component: React.ComponentType) {
 
     return () => {
         // get user from store
-        const { user } = useAuthContext()
+        const { user, authIsReady } = useAuthContext()
 
-        if (!user) {
+        if (!user && authIsReady) {
             return <Component {...props} {...otherProps} />
         }
 
@@ -32,5 +32,6 @@ export const Redirect = ({ url }: { url: string }) => {
     useEffect(() => {
         router.push(url);
     }, [router, url]);
-    return <Loader />;
+    return <PageLoader />;
+
 };

@@ -20,7 +20,7 @@ export default function Navbar() {
                     <ul className="flex-between gap-6 text-pry-white">
                         <li className="nav-text"><Link href={'/tournaments'}>tournaments</Link></li>
                         <li className="nav-text"><Link href={'/rules'}>rules</Link></li>
-                        <li className="nav-text"><Link href={'/partner'}>partner</Link></li>
+                        <li className="nav-text"><Link href={'/partners'}>partners</Link></li>
                         <li className="nav-text"><Link href={'/my-team'}>my team</Link></li>
                     </ul>
                 </nav>
