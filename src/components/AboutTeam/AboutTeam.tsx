@@ -38,7 +38,10 @@ export default function AboutTeam() {
             </div>
             <div className="mt-8 flex-start flex-col gap-2">
                 <p className="title-text text-pry-white">Members</p>
-                <ul>
+                <ul className="flex flex-col gap-2">
+                    {teamData?.members.map((item, i) => (
+                        <li className="body-text text-pry-white p-2 border-white border rounded-sm" key={i}>{item}</li>
+                    ))}
                 </ul>
             </div>
             {
