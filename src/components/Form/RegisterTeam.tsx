@@ -91,7 +91,7 @@ export default function RegisterTeam() {
 
     useEffect(() => {
         if (success) {
-            // router.push("/my-team")
+            router.push("/my-team")
             showToast('success', 'Team successfully registered')
         }
     }, [success]);

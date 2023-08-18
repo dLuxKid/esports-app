@@ -5,6 +5,15 @@ export interface teamType {
   thumbnail: File;
 }
 
+export interface collectionTeamType {
+  id: string;
+  teamName: string;
+  password: string;
+  sqaudType: string;
+  photoUrl: string;
+  members: string[];
+}
+
 export interface tournamentType {
   tournamentName: string;
   code: string;

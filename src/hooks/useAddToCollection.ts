@@ -68,10 +68,9 @@ export default function useAddToCollection() {
       // function to listen for logs
       querySnapshot.docs.map((doc) => {
         const data = doc.data();
-        console.log(data);
 
         if (data) {
-          router.push("/");
+          router.push("/my-team");
           throw new Error("Cannot own more than one team");
         }
       });
@@ -83,6 +82,7 @@ export default function useAddToCollection() {
         teamName: name,
         pin: password,
         photoUrl: url,
+        members: [],
       });
 
       // update state
