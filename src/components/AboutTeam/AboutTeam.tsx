@@ -1,15 +1,17 @@
 'use client'
 
-
 import useFetchFromCollection from "@/hooks/useFetchFromCollection"
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import Loader from "../Loader/Loader"
+import AddPlayerForm from "../Form/AddPlayerForm"
 
 export default function AboutTeam() {
 
     const { fetchTeams, teamData, loading } = useFetchFromCollection()
+
+    const [showForm, setShowForm] = useState<boolean>(false)
 
     useEffect(() => {
         fetchTeams()
@@ -43,9 +45,18 @@ export default function AboutTeam() {
                 !teamData?.members.length &&
                 <div className="mt-12">
                     <p className="tiny-text text-red-600 mb-2">No members in the team</p>
-                    <button type="button" className="btn white-btn">Register Players</button>
+                    <button type="button" className="btn white-btn" onClick={() => setShowForm(true)}>Register Player</button>
                 </div>
             }
+
+            {
+                teamData?.members.length !== 6 && teamData?.members.length &&
+                <div className="mt-12">
+                    <button type="button" className="btn white-btn" onClick={() => setShowForm(true)}>Add Player</button>
+                </div>
+            }
+
+            {showForm && <AddPlayerForm setShowForm={setShowForm} />}
         </div>
 
     )

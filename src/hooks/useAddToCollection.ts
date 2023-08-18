@@ -76,7 +76,7 @@ export default function useAddToCollection() {
       });
 
       // create user document
-      await setDoc(doc(collection(db, "team")), {
+      await setDoc(doc(db, "team", user.uid), {
         id: user.uid,
         sqaudType,
         teamName: name,
@@ -138,7 +138,7 @@ export default function useAddToCollection() {
       const logo = await getDownloadURL(ref(projectStorageRef));
 
       // create tournament document
-      await setDoc(doc(collection(db, "tournaments")), {
+      await setDoc(doc(db, "tournaments", user.uid), {
         id: user.uid,
         tournamentName,
         code,
