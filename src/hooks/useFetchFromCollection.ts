@@ -65,12 +65,11 @@ export default function useFetchFromCollection() {
 
         const data = doc.data();
         td.push(data as tournamentType);
-
-        setTableData(td);
-
-        setLastDoc(querySnapshot.docs[querySnapshot.docs.length - 1]);
-        setHasMore(tableData.length === 10);
       });
+
+      setLastDoc(querySnapshot.docs[querySnapshot.docs.length - 1]);
+      setHasMore(tableData.length === 10);
+      setTableData(td);
     } catch (error: any) {
       // handle error
       if (error instanceof FirebaseError) {

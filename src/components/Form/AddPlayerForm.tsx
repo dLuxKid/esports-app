@@ -54,8 +54,8 @@ export default function AddPlayerForm({ setShowForm }: Props) {
 
     return (
         <div className="flex-center fixed top-0 right-0 left-0 bottom-0 w-full h-full p-[5%]">
-            <div className="bg-black opacity-50 absolute top-0 right-0 left-0 bottom-0 w-full h-full z-10"></div>
-            <div className="body-text text-white bg-red-600 h-8 w-8 flex-center text-center absolute right-0 top-0 z-20 cursor-pointer" onClick={()=> setShowForm(false)}>x</div>
+            <div className="bg-black opacity-90 absolute top-0 right-0 left-0 bottom-0 w-full h-full z-10"></div>
+            <div className="body-text text-white bg-red-600 h-8 w-8 flex-center text-center absolute right-0 top-0 z-20 cursor-pointer" onClick={() => setShowForm(false)}>x</div>
             <form className='w-full max-w-sm flex items-stretch justify-center gap-4 md:gap-6 flex-col bg-pry-white rounded-2xl p-6 z-20' onSubmit={handleSubmit}>
                 <label className="w-full h-[2.8125rem] relative">
                     <input

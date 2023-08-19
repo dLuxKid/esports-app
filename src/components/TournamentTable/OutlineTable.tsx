@@ -14,8 +14,7 @@ interface Props {
 
 export default function OutlineTable({ hasMore, tableData, loadMore, setSelectedTourney, selectedTourney }: Props) {
 
-    const tableRowStyles = 'py-2 pr-2 text-left text-[#ACACAC] uppercase tracking-[1px] tiny-text w-1/5'
-    const tableDataStyles = 'py-1 pr-2 body-text w-1/5'
+    const tableRowStyles = 'py-2 pr-2 text-left text-[#ACACAC] uppercase tracking-[1px] tiny-text'
 
 
 
@@ -56,10 +55,10 @@ export default function OutlineTable({ hasMore, tableData, loadMore, setSelected
                             <tbody className="bg-white">
                                 {tableData.map((item, i) => (
                                     <tr key={i} className="border-b border-b-pry-grey hover:bg-pry-grey cursor-pointer">
-                                        <td onClick={() => showTourneyInfo(item)} className={`${tableDataStyles} pl-4 cursor-pointer`}>{item.tournamentName}</td>
-                                        <td className={tableDataStyles}>{item.mode}</td>
-                                        <td className={tableDataStyles}>{item.time}</td>
-                                        <td className={tableDataStyles}>{item.date}</td>
+                                        <td onClick={() => showTourneyInfo(item)} className={'py-1 pr-2 body-text w-2/5 pl-4 cursor-pointer overflow-x-scroll'}>{item.tournamentName}</td>
+                                        <td className={'py-1 body-text w-1/10 text-center'}>{item.mode}</td>
+                                        <td className={'py-1 body-text w-1/10 text-center'}>{item.time}</td>
+                                        <td className={'py-1 body-text w-1/5 text-center'}>{item.date}</td>
                                         <td className="py-2">
                                             <button type="button" className="text-center font-semibold py-2 px-9 transition-all duration-300 hover:opacity-90 cta-btn h-12">Check in</button>
                                         </td>
