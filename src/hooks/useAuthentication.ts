@@ -1,5 +1,3 @@
-"use client";
-
 // react imports
 import { useState } from "react";
 // firebase imports
@@ -78,6 +76,7 @@ const useAuthentication = () => {
 
         // send user data to store
         dispatch({ type: "LOGIN", payload: user });
+        sessionStorage.setItem("user", JSON.stringify(user));
 
         // update state
         setPending(false);
@@ -109,6 +108,7 @@ const useAuthentication = () => {
 
         // send user data to store
         dispatch({ type: "LOGIN", payload: user });
+        sessionStorage.setItem("user", JSON.stringify(user));
 
         // update state
         setPending(false);
@@ -137,6 +137,7 @@ const useAuthentication = () => {
       .then(async () => {
         // dispatch logout
         dispatch({ type: "LOGOUT" });
+        sessionStorage.removeItem("user");
 
         // update state
         setPending(false);

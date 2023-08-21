@@ -1,5 +1,3 @@
-"use client";
-
 // react imports
 import { useState } from "react";
 // next imports
@@ -138,8 +136,8 @@ export default function useAddToCollection() {
       const logo = await getDownloadURL(ref(projectStorageRef));
 
       // create tournament document
-      await setDoc(doc(db, "tournaments", user.uid), {
-        id: user.uid,
+      await setDoc(doc(collection(db, "tournaments")), {
+        tid: user.uid,
         tournamentName,
         code,
         mode,
@@ -151,6 +149,7 @@ export default function useAddToCollection() {
         logo,
         date,
         time,
+        entries: [],
       });
 
       // update state

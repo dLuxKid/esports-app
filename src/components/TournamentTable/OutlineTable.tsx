@@ -1,14 +1,17 @@
 'use client'
 
-// types
-import { tournamentType } from "@/types/collectionTypes";
+// next
+import Link from "next/link";
+// react
 import { Dispatch, SetStateAction } from "react";
+// types
+import { collectionTournamentType } from "@/types/collectionTypes";
 
 interface Props {
-    tableData: tournamentType[]
+    tableData: collectionTournamentType[]
     loadMore?: () => void
-    setSelectedTourney?: Dispatch<SetStateAction<tournamentType | null>>
-    selectedTourney?: tournamentType
+    setSelectedTourney?: Dispatch<SetStateAction<collectionTournamentType | null>>
+    selectedTourney?: collectionTournamentType
     hasMore?: boolean
 }
 
@@ -16,9 +19,7 @@ export default function OutlineTable({ hasMore, tableData, loadMore, setSelected
 
     const tableRowStyles = 'py-2 pr-2 text-left text-[#ACACAC] uppercase tracking-[1px] tiny-text'
 
-
-
-    const showTourneyInfo = (item: tournamentType) => {
+    const showTourneyInfo = (item: collectionTournamentType) => {
         if (!setSelectedTourney) return
 
         if (selectedTourney) {
@@ -56,11 +57,13 @@ export default function OutlineTable({ hasMore, tableData, loadMore, setSelected
                                 {tableData.map((item, i) => (
                                     <tr key={i} className="border-b border-b-pry-grey hover:bg-pry-grey cursor-pointer">
                                         <td onClick={() => showTourneyInfo(item)} className={'py-1 pr-2 body-text w-2/5 pl-4 cursor-pointer overflow-x-scroll'}>{item.tournamentName}</td>
-                                        <td className={'py-1 body-text w-1/10 text-center'}>{item.mode}</td>
-                                        <td className={'py-1 body-text w-1/10 text-center'}>{item.time}</td>
-                                        <td className={'py-1 body-text w-1/5 text-center'}>{item.date}</td>
+                                        <td className={'py-1 body-text w-1/10'}>{item.mode}</td>
+                                        <td className={'py-1 body-text w-1/10'}>{item.time}</td>
+                                        <td className={'py-1 body-text w-1/5'}>{item.date}</td>
                                         <td className="py-2">
-                                            <button type="button" className="text-center font-semibold py-2 px-9 transition-all duration-300 hover:opacity-90 cta-btn h-12">Check in</button>
+                                            <Link href={`tournaments/${item.id}`}>
+                                                <button type="button" className="font-semibold py-2 px-9 transition-all duration-300 hover:opacity-90 cta-btn h-12">Check in</button>
+                                            </Link>
                                         </td>
                                     </tr>
                                 ))}

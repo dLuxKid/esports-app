@@ -20,7 +20,7 @@ export default function AboutTeam() {
     if (loading) {
         return (
             <div className="flex-center flex-col gap-4 w-full">
-                <h1 className="body-text">Fetching team data</h1>
+                <h1 className="body-text text-pry-white">Fetching team data</h1>
                 <Loader />
             </div>
         )
@@ -40,7 +40,7 @@ export default function AboutTeam() {
                 <p className="title-text text-pry-white">Members</p>
                 <ul className="flex flex-col gap-2">
                     {teamData?.members.map((item, i) => (
-                        <li className="body-text text-pry-white p-2 border-white border rounded-sm" key={i}>{item}</li>
+                        <li className="body-text text-pry-white p-2 border-white border rounded-sm" key={i}>{item.ign}</li>
                     ))}
                 </ul>
             </div>

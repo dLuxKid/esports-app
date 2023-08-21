@@ -48,7 +48,10 @@ export default function AddPlayerForm({ setShowForm }: Props) {
     }
 
     useEffect(() => {
-        if (success) showToast('success', `${state.ign} has been registered`)
+        if (success) {
+            showToast('success', `${state.ign} has been registered`)
+            setShowForm(false)
+        }
     }, [success])
 
 

@@ -1,5 +1,3 @@
-"use client";
-
 // next imports
 import { useRouter } from "next/navigation";
 // react imports

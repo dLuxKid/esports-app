@@ -1,10 +1,10 @@
 // next
 import Link from "next/link";
 // types
-import { tournamentType } from "@/types/collectionTypes";
+import { collectionTournamentType, } from "@/types/collectionTypes";
 
 
-export default function AboutTournament({ selectedTourney }: { selectedTourney: tournamentType }) {
+export default function AboutTournament({ selectedTourney }: { selectedTourney: collectionTournamentType }) {
     return (
         <div className="w-full max-w-md bg-pry-green text-pry-white p-12">
             <div className="flex-start flex-col gap-8">
@@ -27,7 +27,9 @@ export default function AboutTournament({ selectedTourney }: { selectedTourney: 
                 <p>
                     <Link href={'/rules'} className='font-bold text-[0.9375rem]'>The rules</Link>
                 </p>
-                <button type='button' className="btn white-btn h-11">Check in</button>
+                <Link href={`tournaments/${selectedTourney.id}`}>
+                    <button type='button' className="btn white-btn h-11">Check in</button>
+                </Link>
             </div>
         </div>
     )

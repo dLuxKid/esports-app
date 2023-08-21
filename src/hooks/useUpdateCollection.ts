@@ -57,10 +57,10 @@ export default function useUpdateCollection() {
         }
       });
 
-      const washingtonRef = doc(db, "team", user.uid);
+      const teamRef = doc(db, "team", user.uid);
 
-      await updateDoc(washingtonRef, {
-        members: arrayUnion(ign),
+      await updateDoc(teamRef, {
+        members: arrayUnion({ ign, email }),
       });
 
       setPending(false);

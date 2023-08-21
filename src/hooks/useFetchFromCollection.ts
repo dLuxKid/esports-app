@@ -11,22 +11,20 @@ import {
   orderBy,
   query,
   startAfter,
-  where,
 } from "firebase/firestore";
 // toast
 import { showToast } from "@/functions/toast";
 // types
 import {
-  teamType,
-  tournamentType,
   collectionTeamType,
+  collectionTournamentType,
 } from "@/types/collectionTypes";
 // contexts
 import { useAuthContext } from "@/contexts/useAuthContext";
 // next imports
-import { useRouter } from "next/navigation";
-import { FirebaseError } from "firebase/app";
 import { firebaseAuthError } from "@/data/firebaseAuthErrors";
+import { FirebaseError } from "firebase/app";
+import { useRouter } from "next/navigation";
 
 export default function useFetchFromCollection() {
   const router = useRouter();
@@ -34,8 +32,10 @@ export default function useFetchFromCollection() {
   const { user } = useAuthContext();
 
   const [loading, setLoading] = useState<boolean>(true);
-  const [tableData, setTableData] = useState<tournamentType[]>([]);
+  const [tableData, setTableData] = useState<collectionTournamentType[]>([]);
   const [teamData, setTeamData] = useState<collectionTeamType>();
+  const [tournamentData, setTournamentData] =
+    useState<collectionTournamentType>();
 
   const [lastDoc, setLastDoc] = useState<any>();
   const [hasMore, setHasMore] = useState<boolean>(false);
@@ -54,7 +54,7 @@ export default function useFetchFromCollection() {
       // function to listen for logs
       const querySnapshot = await getDocs(q);
 
-      const td: tournamentType[] = [];
+      const td: collectionTournamentType[] = [];
       // loop throught the document in audit logs
       querySnapshot.forEach((doc) => {
         // return error if document does not exist
@@ -64,7 +64,7 @@ export default function useFetchFromCollection() {
         }
 
         const data = doc.data();
-        td.push(data as tournamentType);
+        td.push({ ...(data as collectionTournamentType), id: doc.id });
       });
 
       setLastDoc(querySnapshot.docs[querySnapshot.docs.length - 1]);
@@ -99,10 +99,10 @@ export default function useFetchFromCollection() {
       limit(10)
     );
     const snapshots = await getDocs(q);
-    const td: tournamentType[] = [];
+    const td: collectionTournamentType[] = [];
     snapshots.docs.map((doc) => {
       const data = doc.data();
-      td.push(data as tournamentType);
+      td.push({ ...(data as collectionTournamentType), id: doc.id });
     });
 
     setTableData(td);
@@ -143,6 +143,37 @@ export default function useFetchFromCollection() {
     }, 1000);
   };
 
+  const fetchSelectedTournament = async (id: string) => {
+    setLoading(true);
+
+    try {
+      const querySnapshot = await getDoc(doc(db, "tournaments", id));
+
+      if (!querySnapshot.exists()) {
+        router.push("/tournaments");
+        throw new Error("Tournament doesn't exist");
+      }
+
+      setTournamentData(querySnapshot.data() as collectionTournamentType);
+    } catch (error: any) {
+      // handle error
+      if (error instanceof FirebaseError) {
+        showToast("error", `${firebaseAuthError[error.code]}`);
+      } else {
+        showToast("error", `${error.message}`);
+        console.error(error);
+      }
+
+      // update state
+      setLoading(false);
+    }
+
+    // set loading to false
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  };
+
   return {
     hasMore,
     tableData,
@@ -151,5 +182,7 @@ export default function useFetchFromCollection() {
     loading,
     fetchTournaments,
     fetchTeams,
+    tournamentData,
+    fetchSelectedTournament,
   };
 }

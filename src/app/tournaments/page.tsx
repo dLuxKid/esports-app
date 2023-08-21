@@ -12,13 +12,13 @@ import OutlineTable from "@/components/TournamentTable/OutlineTable";
 import PageLoader from '@/components/PageLoader/PageLoader';
 import AboutTournament from '@/components/AboutTournament/AboutTournament';
 // types
-import { tournamentType } from '@/types/collectionTypes';
+import { collectionTournamentType, tournamentType } from '@/types/collectionTypes';
 // context
 import { useAuthContext } from '@/contexts/useAuthContext';
 // HOC
 import withAuth from '@/HOC/withAuth';
 // firebase
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore';
 import { db } from '@/firebase';
 
 
@@ -26,7 +26,7 @@ function CreateTournament() {
 
     const { hasMore, loading, tableData, loadMore, fetchTournaments } = useFetchFromCollection()
 
-    const [selectedTourney, setSelectedTourney] = useState<tournamentType | null>(null)
+    const [selectedTourney, setSelectedTourney] = useState<collectionTournamentType | null>(null)
 
     const { user } = useAuthContext()
 
@@ -34,17 +34,10 @@ function CreateTournament() {
 
     async function fetchData() {
         if (!user) return
-        // query firebase db
-        const q = query(
-            collection(db, "users"),
-            where("email", "==", user.email)
-        );
-        const querySnapshot = await getDocs(q);
-        // function to listen for logs
-        querySnapshot.docs.map((doc) => {
-            const data = doc.data();
-            if (data.accountType === 'host') setShowBtn(true)
-        })
+
+        const querySnapshot = await getDoc(doc(db, "users", user.uid));
+
+        if (querySnapshot.exists() && querySnapshot.data().accountType === 'host') setShowBtn(true)
     }
 
     useEffect(() => {
@@ -60,7 +53,7 @@ function CreateTournament() {
             <Banner text="All tournaments" />
             <section className="flex justify-between items-baseline gap-[5%]">
                 <div className="w-3/5">
-                    <OutlineTable hasMore={hasMore} tableData={tableData} loadMore={loadMore} selectedTourney={selectedTourney as tournamentType} setSelectedTourney={setSelectedTourney} />
+                    <OutlineTable hasMore={hasMore} tableData={tableData} loadMore={loadMore} selectedTourney={selectedTourney as collectionTournamentType} setSelectedTourney={setSelectedTourney} />
                     {
                         showBtn &&
                         <div className='flex-start mt-12'>
