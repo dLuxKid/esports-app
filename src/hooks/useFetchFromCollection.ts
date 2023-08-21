@@ -154,7 +154,10 @@ export default function useFetchFromCollection() {
         throw new Error("Tournament doesn't exist");
       }
 
-      setTournamentData(querySnapshot.data() as collectionTournamentType);
+      setTournamentData({
+        ...(querySnapshot.data() as collectionTournamentType),
+        id: querySnapshot.id,
+      });
     } catch (error: any) {
       // handle error
       if (error instanceof FirebaseError) {
