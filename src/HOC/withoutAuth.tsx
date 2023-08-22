@@ -10,7 +10,7 @@ import { useAuthContext } from "@/contexts/useAuthContext"
 import PageLoader from "@/components/PageLoader/PageLoader"
 
 
-export default function withoutAuth(Component: React.ComponentType) {
+function withoutAuth(Component: React.ComponentType) {
     const props = Component.defaultProps
     const otherProps = Component.propTypes
 
@@ -35,3 +35,5 @@ export const Redirect = ({ url }: { url: string }) => {
     return <PageLoader />;
 
 };
+
+export default withoutAuth

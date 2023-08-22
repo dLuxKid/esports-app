@@ -6,7 +6,7 @@ import AllRules from "@/components/Rules/AllRules";
 export default function Rules() {
     return (
         <>
-            <Banner text='set of rules' />
+            <Banner text="set of rules" />
             <section className="flex flex-col gap-6 nav:gap-12">
                 <div className='flex-center flex-col gap-6'>
                     <h1 className='header-text leading-5 text-black'>The set of rules</h1>

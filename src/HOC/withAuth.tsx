@@ -10,7 +10,7 @@ import { useAuthContext } from "@/contexts/useAuthContext"
 import PageLoader from "@/components/PageLoader/PageLoader"
 
 
-export default function withAuth(Component: React.ComponentType) {
+function withAuth(Component: React.ComponentType) {
 
     const props = Component.defaultProps
     const otherProps = Component.propTypes
@@ -37,3 +37,5 @@ export const Redirect = ({ url }: { url: string }) => {
     }, [router, url]);
     return <PageLoader />;
 };
+
+export default withAuth
