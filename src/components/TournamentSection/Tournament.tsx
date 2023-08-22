@@ -29,7 +29,7 @@ export default function Tournament() {
             </div>
             {
                 loading ? <Loader /> :
-                    <div className="w-full max-w-4xl overflow-scroll">
+                    <div className="w-full max-w-4xl overflow-x-scroll">
                         <OutlineTable tableData={tableData} />
                     </div>
             }

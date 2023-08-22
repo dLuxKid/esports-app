@@ -52,7 +52,7 @@ function CreateTournament() {
         <>
             <Banner text="All tournaments" />
             <section className="flex justify-between items-baseline flex-col nav:flex-row gap-[5%]">
-                <div className="w-full nav:w-3/5 overflow-scroll order-2 nav:order-1 mt-8 nav:mt-0">
+                <div className="w-full nav:w-3/5 overflow-x-scroll order-2 nav:order-1 mt-8 nav:mt-0">
                     <OutlineTable hasMore={hasMore} tableData={tableData} loadMore={loadMore} selectedTourney={selectedTourney as collectionTournamentType} setSelectedTourney={setSelectedTourney} />
                     {
                         showBtn &&
