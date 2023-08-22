@@ -14,7 +14,7 @@ import { authActions, authContextType, authState } from "@/types/context";
 const AuthContext = createContext({} as authContextType)
 
 const initialState = {
-    user: JSON.parse(sessionStorage.getItem('user') as string) || null,
+    user: null,
     authIsReady: false,
 }
 
@@ -38,8 +38,8 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
     const router = useRouter()
 
     useEffect(() => {
-        if (state.user) {
-            dispatch({ type: "AUTH_IS_READY", payload: state.user });
+        if (sessionStorage.getItem('user')) {
+            dispatch({ type: "AUTH_IS_READY", payload: JSON.parse(sessionStorage.getItem('user') as string) });
         } else {
             const unSubscribe = onAuthStateChanged(auth, (user) => {
                 if (user) {
