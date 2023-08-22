@@ -101,7 +101,7 @@ export default function SignupForm() {
     }, [success]);
 
     return (
-        <div className='w-full md:w-3/4 flex-start flex-col gap-8 p-[5%] bg-pry-grey rounded-lg'>
+        <div className='w-full nav:w-9/12 flex-start flex-col gap-8 py-[5%] px-[5%] nav:px-[2.5%] bg-pry-grey rounded-lg'>
             <div className="flex-start">
                 <h1 className="title-text">Register</h1>
             </div>
@@ -142,7 +142,7 @@ export default function SignupForm() {
                         <Icon icon={!passwordVisible ? 'ph:eye-closed-thin' : "ph:eye-thin"} width={24} height={24} color="#d4d4d4" />
                     </span>
                 </label>
-                <label className="w-full flex-start gap-4">
+                <label className="w-full flex-start gap-4 flex-col md:flex-row">
                     {
                         options.map((item, i) => (
                             <div key={i} className="flex-center gap-1">

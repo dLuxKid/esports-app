@@ -23,9 +23,9 @@ export default function AllRules() {
 
     return (
         <div className='bg-pry-grey p-[5%]'>
-            <div className='flex-center gap-12 mb-8'>
-                <p className={`title-text text-pure-black cursor-pointer pb-2 ${rules === generalRules && 'border-pry-black border-b-2'}`} onClick={() => setRules(generalRules)}>GENERAL RULESET</p>
-                <p className={`title-text text-pure-black cursor-pointer pb-2 ${rules === brRules && 'border-pry-black border-b-2'}`} onClick={() => setRules(brRules)}>BR RULESET</p>
+            <div className='flex-center flex-col md:flex-row gap-4 md:gap-6 mb-8'>
+                <p className={`title-text text-pure-black cursor-pointer pb-1 md:pb-2 ${rules === generalRules && 'border-pry-black border-b-2'}`} onClick={() => setRules(generalRules)}>GENERAL RULESET</p>
+                <p className={`title-text text-pure-black cursor-pointer pb-1 md:pb-2 ${rules === brRules && 'border-pry-black border-b-2'}`} onClick={() => setRules(brRules)}>BR RULESET</p>
             </div>
 
             <div className="flex-center flex-col gap-6">

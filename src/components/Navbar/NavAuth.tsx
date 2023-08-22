@@ -7,8 +7,11 @@ import { useAuthContext } from "@/contexts/useAuthContext";
 // components
 import Avatar from "../Avatar/Avatar";
 
+interface Props {
+    toggleMenu?: () => void
+}
 
-export default function NavAuth() {
+export default function NavAuth({ toggleMenu }: Props) {
     const { user, authIsReady } = useAuthContext()
 
     if (!authIsReady) {
@@ -24,7 +27,7 @@ export default function NavAuth() {
         <>
             {user?.uid ?
                 <Avatar url={user.photoURL} name={user.displayName} /> :
-                <div className="flex-center gap-4">
+                <div className="flex-center flex-col nav:flex-row gap-4" onClick={toggleMenu}>
                     <Link href={'/login'}>
                         <button type='button' className="btn white-outline">
                             Login

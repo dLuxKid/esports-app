@@ -18,9 +18,9 @@ export default function Tournament() {
     }, [])
 
     return (
-        <section className="flex-between">
-            <div className="flex-start flex-col gap-6 w-1/3 overflow-ellipsis">
-                <h1 className="header-text text-pure-black">Upcoming Events</h1>
+        <section className="flex-between flex-col gap-4 md:gap-6">
+            <div className="flex-center nav:flex-start flex-col gap-6 w-full">
+                <h1 className="header-text text-pure-black">Upcoming Tourmanents</h1>
                 <div>
                     <Link href={'/tournaments'}>
                         <button type="button" className="btn black-btn">All tournaments</button>
@@ -29,7 +29,7 @@ export default function Tournament() {
             </div>
             {
                 loading ? <Loader /> :
-                    <div className="w-3/5">
+                    <div className="w-full max-w-4xl overflow-scroll">
                         <OutlineTable tableData={tableData} />
                     </div>
             }

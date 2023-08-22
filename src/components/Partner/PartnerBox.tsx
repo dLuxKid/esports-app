@@ -17,8 +17,8 @@ interface Partner {
 
 function PartnerBox({ item }: Partner) {
   return (
-    <div className={`flex-between gap-[5%] ${item.id % 2 === 0 && 'flex-row-reverse'}`}>
-      <div className={`flex-start w-1/2 flex-col gap-4 ${item.id % 2 === 0 && 'pl-20'}`}>
+    <div className={`flex-between my-2 gap-[5%] flex-col-reverse sm:flex-row ${item.id % 2 === 0 && 'sm:flex-row-reverse'}`}>
+      <div className={`sm:flex-start flex-center sm:w-1/2 flex-col gap-4 ${item.id % 2 === 0 && 'sm:pl-20'}`}>
         <h1 className="header-text">{item.name}</h1>
         <div className="flex-start gap-4">
           <a title="twitter link" href={item.twitter} target="_blank" rel="noopener noreferrer">
@@ -40,7 +40,7 @@ function PartnerBox({ item }: Partner) {
           }
         </div>
       </div>
-      <div className='w-1/2 h-80'>
+      <div className='sm:w-1/2 h-64 md:h-80'>
         <Image src={item.photoUrl} alt="caster photo" className="object-fill object-center w-full h-full" />
       </div>
     </div>

@@ -32,6 +32,9 @@ const config: Config = {
       width: {
         "1/10": "10%",
       },
+      screens: {
+        nav: "992px",
+      },
     },
   },
   plugins: [],

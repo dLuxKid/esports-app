@@ -15,8 +15,8 @@ export default function Home() {
     <main>
       <CarouselSection />
       <Tournament />
-      <section className="flex-between bg-pry-black">
-        <div className="flex-start flex-col gap-6 w-2/5">
+      <section className="flex-between flex-col nav:flex-row space-y-12 bg-pry-black">
+        <div className="flex-start flex-col gap-6 w-full nav:w-2/5">
           <h1 className="header-text text-pry-white">Current News</h1>
           <p className="body-text text-pry-white">Explore the dynamic universe of Call of Duty: Mobile (CODM) on our blog! From action-packed multiplayer clashes to intense battle royale encounters, our posts delve into the heart of mobile gaming excitement. Uncover tips, updates, and strategies to enhance your CODM experience. Join us as we navigate this thrilling virtual battlefield together!</p>
           <div>
@@ -25,14 +25,14 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div className="w-1/2 flex flex-wrap gap-4">
-          <div className="w-[48%]">
+        <div className="nav:w-1/2 flex flex-wrap gap-4">
+          <div className="md:w-[48%]">
             <a href="https://www.callofduty.com/blog/2023/07/call-of-duty-mobile-season-7-2023-heat-wave-maps-modes-themed-event" target="_blank" rel="noopener noreferrer">
               <img src="https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/hero/codm/CODM-7-HEAT-WAVE-TOUT.jpg" alt="blog image" />
               <p className="body-text text-pry-white">It’s a Scorching Summer in Call of Duty: Mobile Season 7 — Heat Wave</p>
             </a>
           </div>
-          <div className="w-[48%]">
+          <div className="md:w-[48%]">
             <a href="https://www.callofduty.com/blog/2023/06/call-of-duty-mobile-season-6-2023-templars-oath-maps-modes-themed-event" target="_blank" rel="noopener noreferrer">
               <img src="https://www.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/hero/codm/CODM-S6-TOUT.jpg" alt="blog image" />
               <p className="body-text text-pry-white">The King Returns in Call of Duty: Mobile Season 6 — Templar’s Oath</p>
@@ -56,7 +56,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className='p-[5%] flex-between bg-pry-green mt-24 gap-6'>
+        <div className='p-[5%] flex-between flex-col nav:flex-row bg-pry-green mt-24 gap-4 md:gap-6'>
           <h1 className='title-text text-white max-w-md'>You have a problem or a question?</h1>
           <p className='body-text text-white max-w-xs'>Hello there! Do you have any questions or are you facing any issues? Feel free to let us know, and we'll be glad to help you out.</p>
           <div>

@@ -139,7 +139,7 @@ export default function SelectedTournament({ params }: { params: { id: string } 
         <>
             <Banner text="All teams" />
             <section className="flex-between flex-col lg:flex-row gap-[5%]">
-                <div className="w-full lg:w-9/12 max-w-4xl flex flex-col gap-4">
+                <div className="w-full lg:w-9/12 max-w-4xl flex flex-col gap-4 order-2 nav:order-1">
                     <SearchBar searchField={searchField} setSearchField={setSearchField} />
                     <div>
                         {!filteredTeam?.length && <p className="body-text">No teams registered in tournament</p>}

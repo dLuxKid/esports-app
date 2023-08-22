@@ -3,7 +3,7 @@ import { collectionTeamType } from "@/types/collectionTypes";
 
 export default function ViewTeam({ selectedTeam }: { selectedTeam: collectionTeamType }) {
     return (
-        <div className="w-full lg:w-1/5 max-w-2xl bg-pry-green text-pry-white p-6">
+        <div className="w-full lg:w-1/5 max-w-2xl bg-pry-green text-pry-white p-6 order-1 nav:order-2 mb-8">
             <div className="flex-start flex-col gap-4">
                 <div className="flex items-center gap-4 pb-1 border-b border-b-pry-grey">
                     <span className="h-11 w-11 rounded-sm">

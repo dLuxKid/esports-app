@@ -86,36 +86,36 @@ button:disabled:hover {
 
 /* TYPOGRAPHY */
 .banner-text {
-  @apply font-bold text-[7.5rem] leading-[8rem];
+  @apply font-bold text-4xl sm:text-5xl md:text-6xl nav:text-7xl nav:leading-[86px];
 }
 
 .nav-text {
-  @apply font-semibold text-[1.375rem] leading-6 cursor-pointer hover:border-pry-white border-transparent border-b-2 transition-all duration-300;
+  @apply font-semibold text-base sm:text-lg md:text-xl nav:text-[1.375rem] leading-6 cursor-pointer hover:border-pry-white border-transparent border-b-2 pb-2 nav:pb-1 transition-all duration-300;
 }
 
 .header-text {
-  @apply font-bold text-[5.625rem] leading-[6rem];
+  @apply font-bold text-3xl md:text-6xl lg:leading-[64px];
 }
 
 .title-text {
-  @apply font-semibold text-5xl leading-[50px];
+  @apply font-semibold text-2xl md:text-3xl nav:text-5xl nav:leading-[50px];
 }
 
 .body-text {
-  @apply font-normal text-[1.125rem] leading-7;
+  @apply font-normal text-base md:text-[1.125rem] leading-7;
 }
 
 .tiny-text {
-  @apply font-normal text-[0.9375rem];
+  @apply font-normal text-sm md:text-base;
 }
 
 /* BUTTON STYLES */
 .white-outline {
-  @apply border border-pry-white text-pry-white bg-transparent text-[1.375rem] leading-6;
+  @apply border border-pry-white text-pry-white bg-transparent text-lg md:text-[1.375rem] leading-6;
 }
 
 .white-btn {
-  @apply border-0 bg-pry-white text-[#181818] text-[1.375rem] leading-6;
+  @apply border-0 bg-pry-white text-[#181818] text-lg md:text-[1.375rem] leading-6;
 }
 
 .black-btn {
@@ -123,7 +123,7 @@ button:disabled:hover {
 }
 
 .cta-btn {
-  @apply border-0 bg-pry-green text-pry-white hover:bg-pry-white hover:text-pry-green hover:border hover:border-pry-green text-[0.9375rem] leading-4 font-bold;
+  @apply border-0 bg-pry-green text-pry-white hover:bg-pry-white hover:text-pry-green hover:border hover:border-pry-green text-[0.9375rem] md:text-base leading-4 font-bold;
 }
 
 .btn {

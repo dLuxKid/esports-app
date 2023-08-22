@@ -97,8 +97,8 @@ export default function RegisterTeam() {
     }, [success]);
 
     return (
-        <div className='w-full md:w-3/4 flex-start flex-col gap-8 p-[5%] bg-pry-grey rounded-lg'>
-            <div className="flex-start flex-col gap-4">
+        <div className='w-full nav:w-3/4 flex-start flex-col gap-6 md:gap-8 p-[5%] bg-pry-grey rounded-lg'>
+            <div className="flex-start flex-col md:gap-2">
                 <h1 className="title-text text-pry-black">Your Team</h1>
                 <p className="body-text text-pry-black">Register your team!</p>
             </div>

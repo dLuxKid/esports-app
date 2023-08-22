@@ -29,7 +29,7 @@ export default function RootLayout({
       <body>
         <AuthContextProvider>
           <Navbar />
-          <main className='max-w-screen min-h-screen'>
+          <main className='max-w-screen'>
             {children}
           </main>
           <Footer />

@@ -11,7 +11,7 @@ export default function page() {
   return (
     <>
       <Banner text='Our Casters' />
-      <section className="flex flex-col space-y-20">
+      <section className="flex flex-col gap-12">
         {streamersData.map((item) => (<PartnerBox key={item.id} item={item} />))}
       </section>
     </>

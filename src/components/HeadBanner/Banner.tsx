@@ -6,7 +6,7 @@ import logo from '@/assets/codmLogo.png'
 
 export default function Banner({ text }: { text: string }) {
     return (
-        <section className="bg-slate-700 flex-between h-[25rem]">
+        <section className="bg-slate-700 flex-between h-52 md:h-80">
             <div className="w-3/5">
                 <h1 className="banner-text text-pry-white">{text}</h1>
             </div>

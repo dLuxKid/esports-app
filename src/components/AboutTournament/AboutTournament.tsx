@@ -6,7 +6,7 @@ import { collectionTournamentType, } from "@/types/collectionTypes";
 
 export default function AboutTournament({ selectedTourney }: { selectedTourney: collectionTournamentType }) {
     return (
-        <div className="w-full max-w-md bg-pry-green text-pry-white p-12">
+        <div className="w-full max-w-md bg-pry-green text-pry-white p-12 order-1 nav:order-2">
             <div className="flex-start flex-col gap-8">
                 <div>
                     <p className="text-2xl">{selectedTourney.tournamentName}</p>

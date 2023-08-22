@@ -61,11 +61,14 @@ export default function LoginForm() {
     }, [success])
 
     return (
-        <div className='w-full md:w-2/3 flex-between p-[5%] bg-pry-white rounded-lg'>
-            <div className='w-full md:w-40 flex-start flex-col gap-12'>
+        <div className='w-full nav:w-9/12 flex-between flex-col nav:flex-row py-[5%] px-[5%] nav:px-[2.5%] bg-pry-white rounded-lg'>
+            <div className='w-full max-w-xs flex-center sm:flex-start flex-col gap-4 nav:gap-8'>
                 <h1 className='title-text text-black'>Welcome back!</h1>
-                <p className='tiny-text text-black text-start'>
-                    No account yet? <br /> <span className='text-pry-green cursor-pointer -mt-1'>
+                <p className='tiny-text text-black flex items-start nav:w-full flex-col'>
+                    <span>
+                        No account yet?
+                    </span>
+                    <span className='text-pry-green cursor-pointer -mt-1'>
                         <Link href={'/signup'}>
                             create one
                         </Link>
@@ -96,9 +99,9 @@ export default function LoginForm() {
                     />
                     <span className="top-5 right-4 absolute cursor-pointer" onClick={() => setPasswordVisible(prev => !prev)}><Icon icon={!passwordVisible ? 'ph:eye-closed-thin' : "ph:eye-thin"} width={24} height={24} color="#d4d4d4" /></span>
                 </label>
-                <div className='flex justify-start items-center mt-6'>
+                <div className='flex justify-start items-start flex-col gap-4 mt-6'>
                     <button type='submit' className="cta-btn btn" disabled={pending} onClick={handleSubmit}>{pending ? <Loader /> : 'Log in'}</button>
-                    <span className='ml-8 tiny-text text-[#d4d4d4] cursor-pointer'>Forget Password?</span>
+                    <span className='tiny-text text-[#d4d4d4] cursor-pointer'>Forget Password?</span>
                 </div>
             </form>
         </div>

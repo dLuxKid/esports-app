@@ -30,18 +30,9 @@ export default function OutlineTable({ hasMore, tableData, loadMore, setSelected
     }
 
     return (
-        <>
+        <div className="min-w-[768px]">
             {tableData.length ?
                 <div className="flex-start flex-col gap-6">
-                    <div className="flex-between w-full max-w-sm">
-                        <div className="flex flex-col gap-2">
-                            <h1 className="title-text text-pry-green">Active</h1>
-                            <span className="h-[2px] w-5/6 bg-pry-green"></span>
-                        </div>
-                        <div className="flex">
-                            <h1 className="title-text text-pry-grey">Expired</h1>
-                        </div>
-                    </div>
                     <div className="w-full">
                         <table className="min-w-full">
                             <thead>
@@ -62,7 +53,7 @@ export default function OutlineTable({ hasMore, tableData, loadMore, setSelected
                                         <td className={'py-1 body-text w-1/5'}>{item.date}</td>
                                         <td className="py-2">
                                             <Link href={`tournaments/${item.id}`}>
-                                                <button type="button" className="font-semibold py-2 px-9 transition-all duration-300 hover:opacity-90 cta-btn h-12">Check in</button>
+                                                <button type="button" className="font-medium py-2 px-8 transition-all duration-300 hover:opacity-90 cta-btn h-12">Check in</button>
                                             </Link>
                                         </td>
                                     </tr>
@@ -86,6 +77,6 @@ export default function OutlineTable({ hasMore, tableData, loadMore, setSelected
                     </p>
                 </div>
             }
-        </>
+        </div>
     )
 }
