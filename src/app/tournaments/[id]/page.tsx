@@ -9,6 +9,7 @@ import Banner from "@/components/HeadBanner/Banner"
 import Loader from "@/components/Loader/Loader"
 import PageLoader from "@/components/PageLoader/PageLoader"
 import SearchBar from "@/components/TeamSearchBar/SearchBar"
+import ViewTeam from "@/components/ViewRegisteredTeam/ViewTeam"
 // contexts
 import { useAuthContext } from "@/contexts/useAuthContext"
 // firebase
@@ -20,6 +21,8 @@ import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore"
 import useFetchFromCollection from "@/hooks/useFetchFromCollection"
 // toast
 import { showToast } from "@/functions/toast"
+// types
+import { collectionTeamType } from "@/types/collectionTypes"
 
 export default function SelectedTournament({ params }: { params: { id: string } }) {
     const { id } = params
@@ -33,6 +36,8 @@ export default function SelectedTournament({ params }: { params: { id: string } 
     const [searchField, setSearchField] = useState<string>('')
     const [showBtn, setShowBtn] = useState<boolean>(false)
     const [pending, setPending] = useState<boolean>(false)
+    const [selectedTeam, setSelectedTeam] = useState<collectionTeamType | null>(null)
+    const [filteredTeam, setFilteredTeam] = useState<collectionTeamType[]>([])
 
     async function fetchData() {
         if (!user) return
@@ -69,6 +74,23 @@ export default function SelectedTournament({ params }: { params: { id: string } 
 
     }, [teamData, tournamentData])
 
+    useEffect(() => {
+
+        if (!searchField.length) {
+            setFilteredTeam(tournamentData?.entries as collectionTeamType[]);
+            return;
+        }
+
+        const filtered = tournamentData?.entries.filter((item) =>
+            item.teamName.toLowerCase().includes(searchField.toLowerCase())
+        )
+
+        if (filtered) {
+            setFilteredTeam(filtered)
+        }
+
+    }, [tournamentData, searchField]);
+
 
     const registerTeam = async () => {
 
@@ -102,6 +124,14 @@ export default function SelectedTournament({ params }: { params: { id: string } 
 
     }
 
+    const showTeam = (item: collectionTeamType) => {
+        if (selectedTeam) {
+            setSelectedTeam(null)
+        } else {
+            setSelectedTeam(item)
+        }
+    }
+
 
     if (loading) return <PageLoader />
 
@@ -109,16 +139,16 @@ export default function SelectedTournament({ params }: { params: { id: string } 
         <>
             <Banner text="All teams" />
             <section className="flex-between flex-col lg:flex-row gap-[5%]">
-                <div className="w-9/12 flex flex-col gap-4">
+                <div className="w-full lg:w-9/12 max-w-4xl flex flex-col gap-4">
                     <SearchBar searchField={searchField} setSearchField={setSearchField} />
                     <div>
-                        {!tournamentData?.entries.length && <p className="body-text">No teams registered in tournament</p>}
-                        {tournamentData && tournamentData?.entries.map((item, i) => (
+                        {!filteredTeam?.length && <p className="body-text">No teams registered in tournament</p>}
+                        {filteredTeam?.map((item, i) => (
                             <div className="flex items-center gap-6 p-4 border-b border-b-pry-grey" key={i}>
                                 <span className="h-11 w-11 rounded-sm">
                                     <img src={item.photoUrl} alt="team logo" className="w-full h-full" />
                                 </span>
-                                <p className="body-text">{item.teamName}</p>
+                                <p className="body-text cursor-pointer" onClick={() => showTeam(item)}>{item.teamName}</p>
                             </div>
                         ))}
                     </div>
@@ -129,9 +159,9 @@ export default function SelectedTournament({ params }: { params: { id: string } 
                         </div>
                     }
                 </div>
-                <div className="w-1/5">hey</div>
 
-            </section>
+                {selectedTeam && <ViewTeam selectedTeam={selectedTeam} />}
+            </section >
         </>
     )
 }

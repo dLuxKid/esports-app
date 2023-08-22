@@ -45,11 +45,11 @@ export default function useUpdateCollection() {
       const querySnapshot = await getDocs(q);
 
       // function to listen for logs
-      querySnapshot.docs.map((doc) => {
-        if (!doc.exists()) {
-          throw new Error("Player does not have an account");
-        }
+      if (querySnapshot.empty) {
+        throw new Error("Player does not have an account");
+      }
 
+      querySnapshot.docs.map((doc) => {
         const data = doc.data();
 
         if (data.accountType !== "player") {
