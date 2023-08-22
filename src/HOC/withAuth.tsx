@@ -15,7 +15,7 @@ function withAuth(Component: React.ComponentType) {
     const props = Component.defaultProps
     const otherProps = Component.propTypes
 
-    return () => {
+    const Auth = () => {
         // get user from store
         const { user, authIsReady } = useAuthContext()
 
@@ -27,6 +27,8 @@ function withAuth(Component: React.ComponentType) {
         return <Component {...props} {...otherProps} />
 
     }
+
+    return Auth
 }
 
 export const Redirect = ({ url }: { url: string }) => {

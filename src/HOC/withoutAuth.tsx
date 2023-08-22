@@ -14,7 +14,7 @@ function withoutAuth(Component: React.ComponentType) {
     const props = Component.defaultProps
     const otherProps = Component.propTypes
 
-    return () => {
+    const Auth = () => {
         // get user from store
         const { user, authIsReady } = useAuthContext()
 
@@ -24,6 +24,8 @@ function withoutAuth(Component: React.ComponentType) {
 
         return <Redirect url="/" />;
     }
+
+    return Auth
 }
 
 export const Redirect = ({ url }: { url: string }) => {
