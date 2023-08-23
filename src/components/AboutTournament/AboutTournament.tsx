@@ -6,7 +6,7 @@ import { collectionTournamentType, } from "@/types/collectionTypes";
 
 export default function AboutTournament({ selectedTourney }: { selectedTourney: collectionTournamentType }) {
     return (
-        <div className="w-full max-w-md bg-pry-green text-pry-white p-12 order-1 nav:order-2">
+        <div className="w-full max-w-md bg-pry-green text-pry-white p-8 md:p-12 order-1 nav:order-2">
             <div className="flex-start flex-col gap-8">
                 <div>
                     <p className="text-2xl">{selectedTourney.tournamentName}</p>
@@ -23,9 +23,9 @@ export default function AboutTournament({ selectedTourney }: { selectedTourney: 
                 <div>
                 </div>
             </div>
-            <div className='mt-10 flex-between'>
+            <div className='mt-10 flex-between flex-col gap-4 md:flex-row'>
                 <p>
-                    <Link href={'/rules'} className='font-bold text-[0.9375rem]'>The rules</Link>
+                    <Link href={'/rules'} className='font-bold text-[0.9375rem]'>Read the rules <span className="ml-2">&rarr;</span></Link>
                 </p>
                 <Link href={`tournaments/${selectedTourney.id}`}>
                     <button type='button' className="btn white-btn h-11">Check in</button>
