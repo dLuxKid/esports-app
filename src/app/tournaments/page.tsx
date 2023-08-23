@@ -1,25 +1,25 @@
 'use client'
 
 // next imports
-import Link from 'next/link'
+import Link from 'next/link';
 // react
 import { useEffect, useState } from "react";
 // hook
 import useFetchFromCollection from "@/hooks/useFetchFromCollection";
 // components
-import Banner from "@/components/HeadBanner/Banner";
-import OutlineTable from "@/components/TournamentTable/OutlineTable";
-import PageLoader from '@/components/PageLoader/PageLoader';
 import AboutTournament from '@/components/AboutTournament/AboutTournament';
+import Banner from "@/components/HeadBanner/Banner";
+import PageLoader from '@/components/PageLoader/PageLoader';
+import OutlineTable from "@/components/TournamentTable/OutlineTable";
 // types
-import { collectionTournamentType, tournamentType } from '@/types/collectionTypes';
+import { collectionTournamentType } from '@/types/collectionTypes';
 // context
 import { useAuthContext } from '@/contexts/useAuthContext';
 // HOC
 import withAuth from '@/HOC/withAuth';
 // firebase
-import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore';
 import { db } from '@/firebase';
+import { doc, getDoc } from 'firebase/firestore';
 
 
 function CreateTournament() {

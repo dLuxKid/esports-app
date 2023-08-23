@@ -8,8 +8,8 @@ export default function Footer() {
         <footer className='w-full'>
             <div className='bg-pry-white px-[10%] py-[5%] flex-wrap flex justify-between items-start gap-8 flex-col md:flex-row'>
                 <div className='flex-start flex-col gap-4 w-full md:max-w-xs'>
-                    <Image src={logo} alt='app logo' width={96} height={72} />
-                    <p className='tiny-text text-black leading-7'>
+                    <h1 className='title-text text-pure-black'>CODM PLAY ARENA</h1>
+                    <p className='tiny-text text-pure-black leading-7'>
                         Power up your esports journey with our cutting-edge app. Sign up now to compete, connect, and conquer in thrilling tournaments. Unleash your gaming prowess and win exciting prizes, all in one place.
                     </p>
                 </div>
@@ -47,7 +47,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className='bg-pry-black px-[5%] py-4 flex-between flex-wrap gap-4'>
-                <p className='body-text text-white'>KID E-sports</p>
+                <p className='body-text text-white'>CODM Play Arena</p>
                 <p className='tiny-text text-white'>&copy; {new Date().getFullYear()} All Rights Reserved</p>
             </div>
         </footer>

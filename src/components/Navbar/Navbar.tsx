@@ -49,7 +49,7 @@ export default function Navbar() {
 
                 {
                     showMenu &&
-                    <div className="flex nav:hidden absolute top-16 right-0 sm:right-[5%] flex-col gap-6 p-12 bg-black w-full max-w-md z-50">
+                    <div className="flex nav:hidden absolute top-16 right-0 sm:right-[5%] flex-col gap-6 p-12 bg-pry-black w-full max-w-md z-50">
                         <nav className="flex-center rounded rounded-r-none w-full" onClick={toggleMenu}>
                             <ul className="flex-between flex-col gap-6 text-pry-white w-full">
                                 <li className="nav-text w-full flex-center"><Link href={'/tournaments'}>tournaments</Link></li>

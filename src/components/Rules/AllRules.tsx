@@ -31,9 +31,9 @@ export default function AllRules() {
             <div className="flex-center flex-col gap-6">
                 {rules.map((item, i) => (
                     <div className="flex flex-col gap-2 w-full" key={i}>
-                        <div className="flex-between p-4 w-full bg-pry-white rounded-sm shadow-sm">
+                        <div className="flex-between p-4 w-full bg-pry-white rounded-sm shadow-sm cursor-pointer" onClick={() => setShowRules(i)}>
                             <h1 className="body-text uppercase text-pry-black">{item.category}</h1>
-                            <span className={`body-text text-black cursor-pointer duration-300 transition-all ${activeIndex === i && 'rotate-180'}`} onClick={() => setShowRules(i)}>
+                            <span className={`body-text text-black cursor-pointer duration-300 transition-all ${activeIndex === i && 'rotate-180'}`}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48">
                                     <path
                                         fill="none"
