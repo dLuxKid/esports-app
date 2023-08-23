@@ -1,7 +1,6 @@
 'use client'
 
-// next imports
-import { useRouter } from "next/navigation";
+
 // react imports
 import React, { createContext, useReducer, useContext, useEffect } from "react";
 // firebase
@@ -35,23 +34,18 @@ export const AuthContextProvider = ({ children }: { children: React.ReactNode })
 
     const [state, dispatch] = useReducer(authReducer, initialState)
 
-    const router = useRouter()
-
     useEffect(() => {
         if (sessionStorage.getItem('user')) {
             dispatch({ type: "AUTH_IS_READY", payload: JSON.parse(sessionStorage.getItem('user') as string) });
         } else {
-            const unSubscribe = onAuthStateChanged(auth, (user) => {
+            onAuthStateChanged(auth, (user) => {
                 if (user) {
                     sessionStorage.setItem('user', JSON.stringify(user));
                     dispatch({ type: "AUTH_IS_READY", payload: user });
                 } else {
-                    dispatch({ type: 'LOGOUT' })
-                    sessionStorage.removeItem('user');
-                    router.push('/login')
+                    dispatch({ type: "AUTH_IS_READY", payload: null });
                 }
             });
-            return () => unSubscribe();
         }
     }, []);
 

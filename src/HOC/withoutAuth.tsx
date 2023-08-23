@@ -14,15 +14,20 @@ function withoutAuth(Component: React.ComponentType) {
     const props = Component.defaultProps
     const otherProps = Component.propTypes
 
+
     const Auth = () => {
         // get user from store
         const { user, authIsReady } = useAuthContext()
 
+        if (!authIsReady) return <PageLoader />
+
+        if (user && authIsReady) {
+            return <Redirect url="/" />;
+        }
+
         if (!user && authIsReady) {
             return <Component {...props} {...otherProps} />
         }
-
-        return <Redirect url="/" />;
     }
 
     return Auth

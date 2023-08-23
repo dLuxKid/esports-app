@@ -46,14 +46,14 @@ export default function useUpdateCollection() {
 
       // function to listen for logs
       if (querySnapshot.empty) {
-        throw new Error("Player does not have an account");
+        throw new Error("Player does not have a codm playa arena account");
       }
 
       querySnapshot.docs.map((doc) => {
         const data = doc.data();
 
         if (data.accountType !== "player") {
-          throw new Error("You can only register player accounts");
+          throw new Error("You can only register player accounts to team");
         }
       });
 

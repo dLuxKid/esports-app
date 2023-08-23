@@ -12,7 +12,7 @@ import withoutAuth from "@/HOC/withoutAuth";
 
 function Login() {
     return (
-        <section className='relative flex-center min-h-[60vh] nav:min-h-[90vh]'>
+        <section className='relative flex-center min-h-[90vh]'>
             <div className='absolute top-0 left-0 right-0 bottom-0 -z-10'>
                 <Image src={codmbg} alt='bg' className='h-full w-full object-fill object-center opacity-80' />
             </div>

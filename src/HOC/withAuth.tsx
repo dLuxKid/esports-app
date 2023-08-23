@@ -24,7 +24,9 @@ function withAuth(Component: React.ComponentType) {
             return <Redirect url="/login" />;
         }
 
-        return <Component {...props} {...otherProps} />
+        if (user && authIsReady) {
+            return <Component {...props} {...otherProps} />
+        }
 
     }
 

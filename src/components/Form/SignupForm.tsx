@@ -142,7 +142,7 @@ export default function SignupForm() {
                         <Icon icon={!passwordVisible ? 'ph:eye-closed-thin' : "ph:eye-thin"} width={24} height={24} color="#d4d4d4" />
                     </span>
                 </label>
-                <label className="w-full flex-start gap-4 flex-col md:flex-row">
+                <label className="w-full flex-start gap-4 flex-col md:flex-row mt-2">
                     {
                         options.map((item, i) => (
                             <div key={i} className="flex-center gap-1">
