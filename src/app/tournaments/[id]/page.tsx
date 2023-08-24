@@ -161,7 +161,7 @@ export default function SelectedTournament({ params }: { params: { id: string } 
     return (
         <>
             <Banner text="All teams" />
-            <section className="flex-between flex-col lg:flex-row gap-[5%] min-h-screen">
+            <section className="flex nav:justify-between nav:items-baseline flex-col nav:flex-row gap-[5%] min-h-screen">
                 <div className="w-full lg:w-9/12 max-w-4xl flex flex-col gap-4 order-2 nav:order-1">
                     <SearchBar searchField={searchField} setSearchField={setSearchField} />
                     <TeamCard teamData={filteredTeam} showTeam={showTeam} />
