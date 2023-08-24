@@ -10,6 +10,7 @@ import Loader from "@/components/Loader/Loader"
 import PageLoader from "@/components/PageLoader/PageLoader"
 import SearchBar from "@/components/TeamSearchBar/SearchBar"
 import ViewTeam from "@/components/ViewRegisteredTeam/ViewTeam"
+import TeamCard from "@/components/ViewRegisteredTeam/TeamCard"
 // contexts
 import { useAuthContext } from "@/contexts/useAuthContext"
 // firebase
@@ -27,7 +28,7 @@ import { collectionTeamType } from "@/types/collectionTypes"
 export default function SelectedTournament({ params }: { params: { id: string } }) {
     const { id } = params
 
-    const { loading, tournamentData, fetchSelectedTournament, fetchTeams, teamData } = useFetchFromCollection()
+    const { loading, tournamentData, fetchSelectedTournament } = useFetchFromCollection()
 
     const { user } = useAuthContext()
 
@@ -38,6 +39,7 @@ export default function SelectedTournament({ params }: { params: { id: string } 
     const [pending, setPending] = useState<boolean>(false)
     const [selectedTeam, setSelectedTeam] = useState<collectionTeamType | null>(null)
     const [filteredTeam, setFilteredTeam] = useState<collectionTeamType[]>([])
+    const [teamData, setTeamData] = useState<collectionTeamType | null>(null)
 
     async function fetchData() {
         if (!user) return
@@ -53,9 +55,30 @@ export default function SelectedTournament({ params }: { params: { id: string } 
 
     }
 
+    async function fetchTeam() {
+        try {
+            const querySnapshot = await getDoc(doc(db, "team", user.uid));
+
+            if (!querySnapshot.exists()) {
+                showToast('warning', "You do not have a team, create a team to register in the tournament");
+                return
+            }
+
+            setTeamData(querySnapshot.data() as collectionTeamType);
+        } catch (error: any) {
+            // handle error
+            if (error instanceof FirebaseError) {
+                showToast("error", `${firebaseAuthError[error.code]}`);
+            } else {
+                showToast("error", `${error.message}`);
+                console.error(error);
+            }
+        }
+    }
+
     useEffect(() => {
         fetchData()
-        fetchTeams()
+        fetchTeam()
         fetchSelectedTournament(id)
     }, [])
 
@@ -138,20 +161,10 @@ export default function SelectedTournament({ params }: { params: { id: string } 
     return (
         <>
             <Banner text="All teams" />
-            <section className="flex-between flex-col lg:flex-row gap-[5%]">
+            <section className="flex-between flex-col lg:flex-row gap-[5%] min-h-screen">
                 <div className="w-full lg:w-9/12 max-w-4xl flex flex-col gap-4 order-2 nav:order-1">
                     <SearchBar searchField={searchField} setSearchField={setSearchField} />
-                    <div>
-                        {!filteredTeam?.length && <p className="body-text">No teams registered in tournament</p>}
-                        {filteredTeam?.map((item, i) => (
-                            <div className="flex items-center gap-6 p-4 border-b border-b-pry-grey" key={i}>
-                                <span className="h-11 w-11 rounded-sm">
-                                    <img src={item.photoUrl} alt="team logo" className="w-full h-full" />
-                                </span>
-                                <p className="body-text cursor-pointer" onClick={() => showTeam(item)}>{item.teamName}</p>
-                            </div>
-                        ))}
-                    </div>
+                    <TeamCard teamData={filteredTeam} showTeam={showTeam} />
                     {
                         showBtn &&
                         <div className="mt-12">

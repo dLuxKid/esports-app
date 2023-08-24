@@ -20,7 +20,7 @@ function MyTeam() {
     return (
         <>
             <Banner text="your team" />
-            <section className="flex-center flex-col gap-4 bg-pry-black">
+            <section className="flex-center flex-col gap-4 bg-pry-black min-h-[90vh]">
                 <h1 className="title-text uppercase text-pry-white">Team Details</h1>
                 <AboutTeam />
             </section>
