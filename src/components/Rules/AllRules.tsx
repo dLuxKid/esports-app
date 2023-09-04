@@ -47,7 +47,7 @@ export default function AllRules() {
                             </span>
                         </div>
                         {activeIndex === i &&
-                            <ul className="flex-start flex-col gap-2 py-2 px-4 bg-pry-white rounded-sm shadow-sm animate-fadeinSlow">
+                            <ul className="flex-start flex-col gap-2 py-2 px-4 bg-pry-white rounded-sm shadow-sm animate-fadeinslow">
                                 {item.rules.map((rules, i) => (
                                     <li className="tiny-text text-black" key={i}>{rules}</li>
                                 ))}
