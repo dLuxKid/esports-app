@@ -4,7 +4,7 @@
 // components
 import CreateTournamentForm from "@/components/Form/CreateTournamentForm";
 import useAccountCheck from "@/hooks/useAccountCheck";
-import PageLoader from "@/components/PageLoader/PageLoader";
+import PageLoader from "@/components/Loader/PageLoader";
 // HOC
 import withAuth from "@/HOC/withAuth";
 // hook

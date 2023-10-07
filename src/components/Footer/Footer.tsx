@@ -37,11 +37,11 @@ export default function Footer() {
                     <ul className='flex-start gap-4 flex-col'>
                         <li className="flex-start flex-col gap-0">
                             <p className='body-text text-black'>Do you have a general question?</p>
-                            <a title='discord server' href='' rel='noopenner' target='_blank' className='text-pry-green font-semibold leading-[22px] cursor-pointer hover:underline'>Discord Server</a>
+                            <a title='discord server' href='https://discord.com/app' rel='noopener' target='_blank' className='text-pry-green font-semibold leading-[22px] cursor-pointer hover:underline'>Discord Server</a>
                         </li>
                         <li className="flex-start flex-col gap-0">
                             <p className='body-text text-black'>Do you have a business request?</p>
-                            <a title='discord server' href='' rel='noopenner' target='_blank' className='text-pry-green font-semibold leading-[22px] cursor-pointer hover:underline'>Contact</a>
+                            <a title='discord server' href='mailto:adetunjimarvellous09@gmail.com' rel='noopener' target='_blank' className='text-pry-green font-semibold leading-[22px] cursor-pointer hover:underline'>Contact</a>
                         </li>
                     </ul>
                 </div>

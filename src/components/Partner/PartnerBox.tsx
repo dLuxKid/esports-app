@@ -1,6 +1,3 @@
-
-
-import { Icon } from "@iconify/react/dist/iconify.js";
 import Image, { StaticImageData } from "next/image";
 
 interface Partner {

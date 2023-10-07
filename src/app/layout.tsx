@@ -15,7 +15,22 @@ import { AuthContextProvider } from '@/contexts/useAuthContext'
 
 export const metadata: Metadata = {
   title: 'codm play arena',
-  description: 'A honme for your codm toutnaments',
+  description: 'A home for all codm battle royale toutnaments',
+  openGraph: {
+    title: 'codm play arena',
+    description: 'A home for all codm battle royale toutnaments',
+    url: 'https://codmplayarena.vercel.app',
+    siteName: 'codm play arena',
+    images: [
+      {
+        url: 'https://imgs.callofduty.com/content/dam/atvi/callofduty/cod-touchui/blog/hero/mwii/MWIII-REVEAL-CARRYFORWARD-TOUT-TXT.jpg',
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 }
 
 export default function RootLayout({

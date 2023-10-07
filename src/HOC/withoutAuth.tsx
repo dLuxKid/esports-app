@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 // context data
 import { useAuthContext } from "@/contexts/useAuthContext"
 // components
-import PageLoader from "@/components/PageLoader/PageLoader"
+import PageLoader from "@/components/Loader/PageLoader"
 
 
 function withoutAuth(Component: React.ComponentType) {

@@ -9,7 +9,7 @@ import useFetchFromCollection from "@/hooks/useFetchFromCollection";
 // components
 import AboutTournament from '@/components/AboutTournament/AboutTournament';
 import Banner from "@/components/HeadBanner/Banner";
-import PageLoader from '@/components/PageLoader/PageLoader';
+import PageLoader from '@/components/Loader/PageLoader';
 import OutlineTable from "@/components/TournamentTable/OutlineTable";
 // types
 import { collectionTournamentType } from '@/types/collectionTypes';

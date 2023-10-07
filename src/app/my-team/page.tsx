@@ -5,7 +5,7 @@ import withAuth from "@/HOC/withAuth"
 import AboutTeam from "@/components/AboutTeam/AboutTeam"
 // Components
 import Banner from "@/components/HeadBanner/Banner"
-import PageLoader from "@/components/PageLoader/PageLoader"
+import PageLoader from "@/components/Loader/PageLoader"
 // Hooks
 import useAccountCheck from "@/hooks/useAccountCheck"
 

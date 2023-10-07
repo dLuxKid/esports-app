@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 // components
 import Banner from "@/components/HeadBanner/Banner"
 import Loader from "@/components/Loader/Loader"
-import PageLoader from "@/components/PageLoader/PageLoader"
+import PageLoader from "@/components/Loader/PageLoader"
 import SearchBar from "@/components/TeamSearchBar/SearchBar"
 import ViewTeam from "@/components/ViewRegisteredTeam/ViewTeam"
 import TeamCard from "@/components/ViewRegisteredTeam/TeamCard"

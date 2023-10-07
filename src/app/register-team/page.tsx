@@ -6,7 +6,7 @@ import Image from "next/image";
 import img from '@/assets/codm6.jpg';
 // components
 import RegisterTeam from "@/components/Form/RegisterTeam";
-import PageLoader from "@/components/PageLoader/PageLoader";
+import PageLoader from "@/components/Loader/PageLoader";
 // HOC
 import withAuth from "@/HOC/withAuth";
 // hook

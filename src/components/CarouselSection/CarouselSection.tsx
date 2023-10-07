@@ -22,7 +22,7 @@ export default function CarouselSection() {
             }}
         >
             <div className="gap-4 flex-start mb-24 flex-col">
-                <h1 className="header-text md:w-4/5 animate-popup animate-popup1 -translate-y-12">Unleash Your Competitive Spirit in the Ultimate Esports Arena</h1>
+                <h1 className="header-text md:w-4/5 animate-popup1 -translate-y-12">Unleash Your Competitive Spirit in the Ultimate Esports Arena</h1>
                 <p className="body-text md:w-3/5 animate-popup2 -translate-y-12">Enter the world of esports, where skill and strategy collide in epic tournaments. Join a vibrant community, showcase your gaming prowess, and chase victory on a global stage. Elevate your gaming journey and forge unbreakable alliances. Your journey to esports glory starts now.</p>
             </div>
         </section>
